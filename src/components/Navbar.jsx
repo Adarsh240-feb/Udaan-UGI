@@ -155,10 +155,15 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Navigation Overlay */}
-      <div className={`lg:hidden fixed inset-0 top-16 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`} onClick={() => setIsOpen(false)} />
+      {isOpen && (
+        <div 
+          className="lg:hidden fixed inset-0 top-16 bg-black/50 backdrop-blur-sm z-40" 
+          onClick={() => setIsOpen(false)} 
+        />
+      )}
 
       {/* Mobile Navigation Menu */}
-      <div className={`lg:hidden fixed top-16 left-0 right-0 bg-white dark:bg-gray-900 border-t border-blue-100 dark:border-gray-700 shadow-2xl transform transition-all duration-300 ease-out max-h-[calc(100vh-4rem)] overflow-y-auto ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+      <div className={`lg:hidden fixed top-16 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t border-blue-100 dark:border-gray-700 shadow-2xl transition-all duration-300 ease-out max-h-[calc(100vh-4rem)] overflow-y-auto ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
         <div className="px-4 py-4 space-y-1">
           {navLinks.map((link, index) => (
             <Link
