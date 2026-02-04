@@ -61,7 +61,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <img 
-              src="/images/udaan logo.png" 
+              src="/images/udaan-logo-optimized.png" 
               alt="UDAAN Logo" 
               loading="eager"
               className="w-14 h-14 object-contain transform group-hover:scale-110 transition-transform duration-300"

@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start gap-2 mb-3 sm:mb-4">
               <img 
-                src="/images/udaan logo.png" 
+                src="/images/udaan-logo-optimized.png" 
                 alt="UDAAN Logo" 
                 loading="eager"
                 className="w-14 sm:w-16 h-14 sm:h-16 object-contain"
