@@ -107,11 +107,7 @@ export default function Teams() {
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       To ensure a perfect tournament bracket (Quarter Finals → Semis → Finals), exactly <span className="font-semibold text-blue-600 dark:text-blue-400">8 Teams</span> are required. Since UGI has 5 colleges, and UCER/UIT/FUGS has the highest student density, <span className="font-semibold text-red-600 dark:text-red-400">UCER, UIT, and FUGS field two separate teams each</span>.
                     </p>
-                    <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-white dark:bg-gray-700 rounded-lg">
-                      <p className="text-xs sm:text-sm text-muted-foreground">
-                        <strong className="text-blue-900 dark:text-white">Note to Committee:</strong> Ensure UCER/UIT/FUGS Team A and Team B are balanced during selection trials to keep the competition fierce.
-                      </p>
-                    </div>
+
                   </div>
                 </div>
               </CardContent>

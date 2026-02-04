@@ -148,7 +148,7 @@ export default function About() {
                 },
                 {
                   title: 'Comprehensive Awards',
-                  desc: '600+ medals, 1175 certificates, and prestigious trophies'
+                  desc: 'Medals, certificates, and prestigious trophies for all winners'
                 }
               ].map((item, i) => (
                 <div key={i} className={`flex gap-3 sm:gap-4 p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all hover:-translate-y-1 animate-fade-in-up delay-${(i + 1) * 100}`}>

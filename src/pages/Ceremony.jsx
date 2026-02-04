@@ -187,8 +187,8 @@ export default function Ceremony() {
             <Card className="bg-white/10 dark:bg-gray-700/50 backdrop-blur-sm border-0 text-center">
               <CardContent className="p-6">
                 <Trophy className="w-12 h-12 mx-auto mb-4" />
-                <h3 className="font-bold text-xl mb-2">600+</h3>
-                <p className="text-white/80">Medals Distributed</p>
+                <h3 className="font-bold text-xl mb-2">🏆</h3>
+                <p className="text-white/80">Medals for All Winners</p>
               </CardContent>
             </Card>
             

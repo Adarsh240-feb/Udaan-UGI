@@ -207,8 +207,8 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {[
-                { icon: Trophy, value: '600+', label: 'Total Medals' },
-                { icon: Award, value: '1175', label: 'Certificates' },
+                { icon: Trophy, value: '🏅', label: 'Gold, Silver, Bronze' },
+                { icon: Award, value: '📜', label: 'Certificates for All' },
                 { icon: Users, value: '1280+', label: 'Athletes' },
                 { icon: Zap, value: '12+', label: 'Sports Events' },
               ].map((item, i) => (

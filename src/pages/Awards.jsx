@@ -40,15 +40,15 @@ export default function Awards() {
             <Card className="border-0 shadow-lg bg-gradient-to-br from-yellow-400 to-yellow-500 text-white animate-fade-in-up">
               <CardContent className="p-4 sm:p-6 text-center">
                 <Medal className="w-6 sm:w-8 md:w-10 h-6 sm:h-8 md:h-10 mx-auto mb-2 sm:mb-3" />
-                <p className="text-xl sm:text-2xl md:text-3xl font-bold">~600</p>
-                <p className="text-[10px] sm:text-xs md:text-sm opacity-90">Total Medals</p>
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold">🏅</p>
+                <p className="text-[10px] sm:text-xs md:text-sm opacity-90">Medals for Winners</p>
               </CardContent>
             </Card>
             <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-500 to-blue-600 text-white animate-fade-in-up delay-100">
               <CardContent className="p-4 sm:p-6 text-center">
                 <FileText className="w-6 sm:w-8 md:w-10 h-6 sm:h-8 md:h-10 mx-auto mb-2 sm:mb-3" />
-                <p className="text-xl sm:text-2xl md:text-3xl font-bold">1175</p>
-                <p className="text-[10px] sm:text-xs md:text-sm opacity-90">Certificates</p>
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold">📜</p>
+                <p className="text-[10px] sm:text-xs md:text-sm opacity-90">For All Participants</p>
               </CardContent>
             </Card>
             <Card className="border-0 shadow-lg bg-gradient-to-br from-red-500 to-red-600 text-white animate-fade-in-up delay-200">
@@ -165,8 +165,8 @@ export default function Awards() {
           <div className="grid sm:grid-cols-2 gap-6 max-w-xl mx-auto">
             <Card className="bg-white/10 dark:bg-gray-700/50 backdrop-blur-sm border-0">
               <CardContent className="p-6">
-                <p className="text-3xl font-bold text-yellow-400">1175</p>
-                <p className="text-sm text-blue-300 dark:text-gray-400">Total Certificates</p>
+                <p className="text-3xl font-bold text-yellow-400">All</p>
+                <p className="text-sm text-blue-300 dark:text-gray-400">Participants Get Certified</p>
               </CardContent>
             </Card>
             <Card className="bg-white/10 dark:bg-gray-700/50 backdrop-blur-sm border-0">
