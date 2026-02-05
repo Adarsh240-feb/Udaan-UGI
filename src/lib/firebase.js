@@ -17,10 +17,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// Admin credentials (in production, use proper authentication)
+// Admin credentials from environment variables
 export const ADMIN_CREDENTIALS = {
-  username: 'admin',
-  password: 'udaan2026'
+  username: import.meta.env.VITE_ADMIN_USERNAME,
+  password: import.meta.env.VITE_ADMIN_PASSWORD
 };
 
 // Sports list with initial scores
