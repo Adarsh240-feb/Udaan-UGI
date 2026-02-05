@@ -1,1 +1,1 @@
-UDAAN -UGI 
+UDAAN - UGI Sports Fest 2026 is the official platform for the premier inter-institute sports championship uniting athletes from across UGI institutions under the motto "One Group. One Spirit. One Champion." Scheduled for February 20-21, 2026, at UIT and UCER campuses, this two-day sporting extravaganza features over 12 sports categories, 8 competing to win ! 
