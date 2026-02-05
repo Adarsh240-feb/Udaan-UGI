@@ -25,8 +25,21 @@ export const ADMIN_CREDENTIALS = {
 
 // Sports list with initial scores
 export const initialSportsData = [
-  { id: 'football', name: 'Football ⚽', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'cricket', name: 'Cricket 🏏', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
+  { 
+    id: 'cricket', 
+    name: 'Cricket 🏏', 
+    category: 'Boys', 
+    team1: '', 
+    team2: '', 
+    status: 'upcoming',
+    // Cricket-specific fields
+    currentInnings: 1,
+    innings1: { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] },
+    innings2: { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] },
+    totalOvers: 10, // 10 overs match
+    battingTeam: 1,
+    lastBalls: [] // Last 12 balls for display
+  },
   { id: 'volleyball_boys', name: 'Volleyball 🏐', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'volleyball_girls', name: 'Volleyball 🏐', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'basketball_boys', name: 'Basketball 🏀', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
@@ -185,6 +198,15 @@ export const updateSportScore = (sportId, updates) => {
   update(sportRef, updates);
 };
 
+// Fix cricket overs (call this once to update existing data)
+export const fixCricketOvers = () => {
+  const cricketRef = ref(database, 'liveScores/cricket');
+  update(cricketRef, { totalOvers: 10 });
+};
+
+// Call immediately to fix existing data
+fixCricketOvers();
+
 // Listen to score changes
 export const subscribeToScores = (callback) => {
   onValue(scoresRef, (snapshot) => {
@@ -197,6 +219,169 @@ export const subscribeToScores = (callback) => {
       callback(initialSportsData);
     }
   });
+};
+
+// Cricket-specific functions
+export const updateCricketScore = (ballType, runs = 0, cricketData) => {
+  const currentInnings = cricketData.currentInnings;
+  const inningsKey = `innings${currentInnings}`;
+  const innings = { ...cricketData[inningsKey] };
+  const currentOver = [...(innings.currentOver || [])];
+  const lastBalls = [...(cricketData.lastBalls || [])];
+  
+  let ballLabel = '';
+  let isLegalBall = true;
+  
+  switch(ballType) {
+    case 'dot':
+      ballLabel = '0';
+      break;
+    case 'run':
+      ballLabel = runs.toString();
+      innings.runs += runs;
+      break;
+    case 'four':
+      ballLabel = '4';
+      innings.runs += 4;
+      innings.fours += 1;
+      break;
+    case 'six':
+      ballLabel = '6';
+      innings.runs += 6;
+      innings.sixes += 1;
+      break;
+    case 'wicket':
+      ballLabel = 'W';
+      innings.wickets += 1;
+      break;
+    case 'wide':
+      ballLabel = 'WD';
+      innings.runs += 1;
+      innings.extras += 1;
+      isLegalBall = false;
+      break;
+    case 'noball':
+      ballLabel = 'NB';
+      innings.runs += 1;
+      innings.extras += 1;
+      isLegalBall = false;
+      break;
+    case 'bye':
+      ballLabel = `B${runs}`;
+      innings.runs += runs;
+      innings.extras += runs;
+      break;
+    case 'legbye':
+      ballLabel = `LB${runs}`;
+      innings.runs += runs;
+      innings.extras += runs;
+      break;
+    default:
+      ballLabel = runs.toString();
+      innings.runs += runs;
+  }
+  
+  // Add ball to current over and last balls
+  currentOver.push(ballLabel);
+  lastBalls.push(ballLabel);
+  if (lastBalls.length > 12) lastBalls.shift();
+  
+  // Update ball count only for legal balls
+  if (isLegalBall) {
+    innings.balls += 1;
+    if (innings.balls === 6) {
+      innings.overs += 1;
+      innings.balls = 0;
+      innings.currentOver = [];
+    } else {
+      innings.currentOver = currentOver;
+    }
+  } else {
+    innings.currentOver = currentOver;
+  }
+  
+  const updates = {
+    [inningsKey]: innings,
+    lastBalls: lastBalls
+  };
+  
+  // Check if innings is complete (all out or overs finished)
+  if (innings.wickets >= 10 || innings.overs >= cricketData.totalOvers) {
+    if (currentInnings === 1) {
+      updates.currentInnings = 2;
+      updates.battingTeam = 2;
+    } else {
+      updates.status = 'completed';
+    }
+  }
+  
+  updateSportScore('cricket', updates);
+  return innings;
+};
+
+export const resetCricketInnings = (inningsNumber) => {
+  const inningsKey = `innings${inningsNumber}`;
+  updateSportScore('cricket', {
+    [inningsKey]: { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] }
+  });
+};
+
+export const switchCricketInnings = (currentData) => {
+  updateSportScore('cricket', {
+    currentInnings: currentData.currentInnings === 1 ? 2 : 1,
+    battingTeam: currentData.battingTeam === 1 ? 2 : 1
+  });
+};
+
+export const undoLastBall = (cricketData) => {
+  const currentInnings = cricketData.currentInnings;
+  const inningsKey = `innings${currentInnings}`;
+  const innings = { ...cricketData[inningsKey] };
+  const currentOver = [...(innings.currentOver || [])];
+  const lastBalls = [...(cricketData.lastBalls || [])];
+  
+  if (lastBalls.length === 0) return;
+  
+  const lastBall = lastBalls.pop();
+  if (currentOver.length > 0) currentOver.pop();
+  
+  // Reverse the ball effect
+  if (lastBall === '0') {
+    // Dot ball, just remove
+  } else if (lastBall === 'W') {
+    innings.wickets -= 1;
+  } else if (lastBall === '4') {
+    innings.runs -= 4;
+    innings.fours -= 1;
+  } else if (lastBall === '6') {
+    innings.runs -= 6;
+    innings.sixes -= 1;
+  } else if (lastBall === 'WD' || lastBall === 'NB') {
+    innings.runs -= 1;
+    innings.extras -= 1;
+    // No ball count change for extras
+    innings.currentOver = currentOver;
+    updateSportScore('cricket', { [inningsKey]: innings, lastBalls });
+    return;
+  } else if (lastBall.startsWith('B') || lastBall.startsWith('LB')) {
+    const runs = parseInt(lastBall.replace(/[^0-9]/g, '')) || 0;
+    innings.runs -= runs;
+    innings.extras -= runs;
+  } else {
+    const runs = parseInt(lastBall) || 0;
+    innings.runs -= runs;
+  }
+  
+  // Adjust ball count
+  if (innings.balls === 0) {
+    innings.overs -= 1;
+    innings.balls = 5;
+  } else {
+    innings.balls -= 1;
+  }
+  
+  innings.currentOver = currentOver;
+  updateSportScore('cricket', { [inningsKey]: innings, lastBalls });
 };
 
 export { database, ref, set, onValue, update };
