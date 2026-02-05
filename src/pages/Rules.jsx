@@ -135,7 +135,7 @@ export default function Rules() {
         </div>
       </section>
 
-      {/* Important Note */}
+      {/* Important Note
       <section className="py-6 sm:py-8 bg-yellow-50 dark:bg-yellow-900/20 border-b border-yellow-200 dark:border-yellow-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-3 sm:gap-4">
@@ -146,7 +146,7 @@ export default function Rules() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <div className="h-1 bg-gradient-to-r from-blue-500 via-red-500 to-blue-500 dark:from-blue-600 dark:via-red-600 dark:to-blue-600" />
 

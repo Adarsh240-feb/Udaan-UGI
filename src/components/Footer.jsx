@@ -44,7 +44,6 @@ export default function Footer() {
                 { path: '/teams', label: 'Participating Teams' },
                 { path: '/venues', label: 'Venues' },
                 { path: '/rules', label: 'Sports Rules' },
-                { path: '/registration', label: 'Registration' },
               ].map((link) => (
                 <Link
                   key={link.path}
@@ -83,6 +82,17 @@ export default function Footer() {
           </p>
           <p className="text-blue-500 dark:text-gray-600 text-[10px] sm:text-xs mt-2">
             "One Group. One Spirit. One Champion."
+          </p>
+          <p className="text-blue-400 dark:text-gray-500 text-[10px] sm:text-xs mt-3">
+            Made with ❤️ by{' '}
+            <a 
+              href="https://adarshk.me/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-medium text-blue-300 hover:text-white transition-colors underline-offset-2 hover:underline"
+            >
+              Adarsh Kesharwani
+            </a>
           </p>
         </div>
       </div>

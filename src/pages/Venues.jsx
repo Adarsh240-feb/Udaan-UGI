@@ -1,4 +1,4 @@
-import { MapPin, Users, Zap, Building } from 'lucide-react';
+import { MapPin, Users, Zap, Building, ExternalLink } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 
@@ -7,6 +7,7 @@ const venueA = {
   subtitle: 'The Outdoor Arena',
   description: 'High energy, large crowd events',
   color: 'from-blue-500 to-blue-700',
+  mapUrl: 'https://maps.app.goo.gl/obzDrBkn1Gi5MQN2A',
   sports: [
     { name: 'Football', category: 'Boys', icon: '⚽' },
     { name: 'Basketball', category: 'Boys & Girls', icon: '🏀' },
@@ -22,6 +23,7 @@ const venueB = {
   subtitle: 'The Strategic Hub',
   description: 'Indoor sports and Cricket field',
   color: 'from-red-500 to-red-700',
+  mapUrl: 'https://maps.app.goo.gl/mfWtnFv4sBWxAPXe6',
   sports: [
     { name: 'Cricket', category: 'Boys', icon: '🏏' },
     { name: 'Volleyball', category: 'Boys & Girls', icon: '🏐' },
@@ -89,11 +91,31 @@ export default function Venues() {
                   <div className={`w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br ${venueA.color} flex items-center justify-center`}>
                     <Building className="w-5 sm:w-6 md:w-7 h-5 sm:h-6 md:h-7 text-white" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <Badge className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 mb-2 text-[10px] sm:text-xs">📍 VENUE A</Badge>
-                    <CardTitle className="text-lg sm:text-xl md:text-2xl text-blue-900 dark:text-white">{venueA.name}</CardTitle>
+                    <a 
+                      href={venueA.mapUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    >
+                      <CardTitle className="text-lg sm:text-xl md:text-2xl text-blue-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {venueA.name}
+                      </CardTitle>
+                      <ExternalLink className="w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
                     <p className="text-sm sm:text-base md:text-lg text-blue-600 dark:text-blue-400 font-medium">{venueA.subtitle}</p>
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1">{venueA.description}</p>
+                    <a 
+                      href={venueA.mapUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-2 text-xs sm:text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium transition-colors"
+                    >
+                      <MapPin className="w-3.5 h-3.5" />
+                      View on Google Maps
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
                   </div>
                 </div>
               </CardHeader>
@@ -121,11 +143,31 @@ export default function Venues() {
                   <div className={`w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br ${venueB.color} flex items-center justify-center`}>
                     <Building className="w-5 sm:w-6 md:w-7 h-5 sm:h-6 md:h-7 text-white" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <Badge className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 mb-2 text-[10px] sm:text-xs">📍 VENUE B</Badge>
-                    <CardTitle className="text-lg sm:text-xl md:text-2xl text-blue-900 dark:text-white">{venueB.name}</CardTitle>
+                    <a 
+                      href={venueB.mapUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    >
+                      <CardTitle className="text-lg sm:text-xl md:text-2xl text-blue-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                        {venueB.name}
+                      </CardTitle>
+                      <ExternalLink className="w-4 h-4 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
                     <p className="text-sm sm:text-base md:text-lg text-red-600 dark:text-red-400 font-medium">{venueB.subtitle}</p>
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1">{venueB.description}</p>
+                    <a 
+                      href={venueB.mapUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-2 text-xs sm:text-sm text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 font-medium transition-colors"
+                    >
+                      <MapPin className="w-3.5 h-3.5" />
+                      View on Google Maps
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
                   </div>
                 </div>
               </CardHeader>

@@ -14,8 +14,7 @@ const navLinks = [
   { path: '/rules', label: 'Rules' },
   { path: '/athletics', label: 'Athletics' },
   { path: '/awards', label: 'Awards' },
-  { path: '/committee', label: 'Committee' },
-  { path: '/registration', label: 'Registration' },
+  { path: '/committee', label: 'Organizers' },
   { path: '/ceremony', label: 'Ceremony' },
 ];
 

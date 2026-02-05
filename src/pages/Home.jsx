@@ -189,7 +189,7 @@ export default function Home() {
               </h2>
               <p className="text-blue-200 dark:text-gray-300 text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
                 United Sports Fest 2026 is not just a tournament; it is the Olympic-style annual sports 
-                championship of the United Group of Institutions. For two days, all 7 colleges under the 
+                championship of the United Group of Institutions. For two days, all 5 colleges under the 
                 United banner will lock horns to claim the ultimate "General Championship Trophy."
               </p>
 

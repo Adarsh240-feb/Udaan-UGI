@@ -63,7 +63,7 @@ export default function About() {
               What is UDAAN?
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-2">
-              United Sports Fest 2026 is not just a tournament; it is the <span className="text-red-600 dark:text-red-400 font-semibold">Olympic-style annual sports championship</span> of the United Group of Institutions. For two days, all 7 colleges under the United banner will lock horns to claim the ultimate <span className="text-blue-600 dark:text-blue-400 font-semibold">"General Championship Trophy."</span>
+              United Sports Fest 2026 is not just a tournament; it is the <span className="text-red-600 dark:text-red-400 font-semibold">Olympic-style annual sports championship</span> of the United Group of Institutions. For two days, all 5 colleges under the United banner will lock horns to claim the ultimate <span className="text-blue-600 dark:text-blue-400 font-semibold">"General Championship Trophy."</span>
             </p>
           </div>
 
@@ -111,7 +111,7 @@ export default function About() {
 
               <div className="grid grid-cols-3 gap-3 sm:gap-6">
                 <div className="bg-white/10 dark:bg-gray-700/50 backdrop-blur-sm rounded-lg sm:rounded-xl p-3 sm:p-4 hover:bg-white/20 dark:hover:bg-gray-600/50 transition-colors">
-                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-400 mb-1">7</div>
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-400 mb-1">5</div>
                   <div className="text-[10px] sm:text-xs md:text-sm text-blue-300 dark:text-gray-400">Colleges United</div>
                 </div>
                 <div className="bg-white/10 dark:bg-gray-700/50 backdrop-blur-sm rounded-lg sm:rounded-xl p-3 sm:p-4 hover:bg-white/20 dark:hover:bg-gray-600/50 transition-colors">

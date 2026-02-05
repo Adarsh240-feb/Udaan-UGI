@@ -13,7 +13,6 @@ import Rules from './pages/Rules.jsx';
 import Athletics from './pages/Athletics.jsx';
 import Awards from './pages/Awards.jsx';
 import Committee from './pages/Committee.jsx';
-import Registration from './pages/Registration.jsx';
 import Ceremony from './pages/Ceremony.jsx';
 import Admin from './pages/Admin.jsx';
 import LiveScore from './pages/LiveScore.jsx';
@@ -47,7 +46,6 @@ function App() {
             <Route path="/athletics" element={<Athletics />} />
             <Route path="/awards" element={<Awards />} />
             <Route path="/committee" element={<Committee />} />
-            <Route path="/registration" element={<Registration />} />
             <Route path="/ceremony" element={<Ceremony />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/live-score" element={<LiveScore />} />
