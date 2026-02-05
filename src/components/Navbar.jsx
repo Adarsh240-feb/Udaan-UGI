@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Sun, Moon } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { ChevronDown, Sun, Moon, Radio, Eye, Lock, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext.jsx';
 
 const navLinks = [
@@ -21,12 +22,15 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showLiveModal, setShowLiveModal] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { isDark, toggleTheme } = useTheme();
 
   // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
+    setShowLiveModal(false);
   }, [location.pathname]);
 
   // Handle scroll effect
@@ -109,6 +113,18 @@ export default function Navbar() {
               </div>
             </div>
 
+            {/* Live Scores Button - Desktop */}
+            <button
+              onClick={() => setShowLiveModal(true)}
+              className="ml-2 px-4 py-2 bg-red-600 text-white rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-red-700 transition-all duration-300 hover:scale-105"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              Live Scores
+            </button>
+
             {/* Dark Mode Toggle - Desktop */}
             <button
               onClick={toggleTheme}
@@ -125,6 +141,14 @@ export default function Navbar() {
 
           {/* Mobile Menu Controls */}
           <div className="lg:hidden flex items-center gap-2">
+            {/* Live Scores Button - Mobile */}
+            <button
+              onClick={() => setShowLiveModal(true)}
+              className="p-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-300"
+              aria-label="Live Scores"
+            >
+              <Radio className="w-5 h-5" />
+            </button>
             {/* Dark Mode Toggle - Mobile */}
             <button
               onClick={toggleTheme}
@@ -194,6 +218,76 @@ export default function Navbar() {
           </p>
         </div>
       </div>
+
+      {/* Live Scores Modal - Rendered via Portal */}
+      {showLiveModal && createPortal(
+        <div className="fixed inset-0 z-[9999]">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/70 backdrop-blur-md"
+            onClick={() => setShowLiveModal(false)}
+          />
+          {/* Modal Container */}
+          <div className="absolute inset-0 flex items-center justify-center p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform transition-all scale-100 animate-fade-in-up">
+              {/* Modal Header */}
+              <div className="bg-gradient-to-r from-blue-600 to-red-600 p-4 text-white relative">
+                <button
+                  onClick={() => setShowLiveModal(false)}
+                  className="absolute top-3 right-3 p-1 hover:bg-white/20 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                    <Radio className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">Live Scores</h3>
+                    <p className="text-white/80 text-sm">UDAAN 2026</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-6 space-y-4">
+                <button
+                  onClick={() => {
+                    setShowLiveModal(false);
+                    navigate('/live-score');
+                  }}
+                  className="w-full flex items-center gap-4 p-4 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/20 rounded-xl hover:scale-[1.02] transition-all duration-200 border border-green-200 dark:border-green-700"
+                >
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">
+                    <Eye className="w-6 h-6" />
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-bold text-green-700 dark:text-green-400">Check Live Scores</h4>
+                    <p className="text-sm text-green-600 dark:text-green-500">View real-time match scores</p>
+                  </div>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setShowLiveModal(false);
+                    navigate('/admin');
+                  }}
+                  className="w-full flex items-center gap-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 rounded-xl hover:scale-[1.02] transition-all duration-200 border border-blue-200 dark:border-blue-700"
+                >
+                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                    <Lock className="w-6 h-6" />
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-bold text-blue-700 dark:text-blue-400">Admin Login</h4>
+                    <p className="text-sm text-blue-600 dark:text-blue-500">Manage & update scores</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </nav>
   );
 }

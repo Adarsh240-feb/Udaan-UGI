@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { 
   Trophy, Calendar, MapPin, Users, ChevronRight, Flame, 
-  Target, Zap, Award, BookOpen, Shield, PartyPopper 
+  Target, Zap, Award, BookOpen, Shield, PartyPopper, Radio 
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -96,6 +96,15 @@ export default function Home() {
               <Button size="lg" variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white/10 hover:scale-105 transition-transform">
                 <Zap className="w-5 h-5 mr-2" />
                 Register Now
+              </Button>
+            </Link>
+            <Link to="/live-score">
+              <Button size="lg" className="w-full sm:w-auto bg-red-600 text-white hover:bg-red-700 font-semibold hover:scale-105 transition-transform">
+                <span className="relative flex h-2 w-2 mr-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                </span>
+                Check Live Scores
               </Button>
             </Link>
           </div>

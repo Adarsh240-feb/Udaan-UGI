@@ -15,6 +15,8 @@ import Awards from './pages/Awards.jsx';
 import Committee from './pages/Committee.jsx';
 import Registration from './pages/Registration.jsx';
 import Ceremony from './pages/Ceremony.jsx';
+import Admin from './pages/Admin.jsx';
+import LiveScore from './pages/LiveScore.jsx';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -47,6 +49,8 @@ function App() {
             <Route path="/committee" element={<Committee />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/ceremony" element={<Ceremony />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/live-score" element={<LiveScore />} />
           </Routes>
         </main>
         <Footer />
