@@ -5,17 +5,17 @@ import { updateSportScore } from './firebase';
 export const updateCricketScore = (ballType, runs = 0, cricketData) => {
   console.log('=== updateCricketScore called ===');
   console.log('ballType:', ballType, 'runs:', runs);
-  
+
   const currentInnings = cricketData.currentInnings;
   const inningsKey = `innings${currentInnings}`;
   const innings = { ...cricketData[inningsKey] };
   const currentOver = [...(innings.currentOver || [])];
   const lastBalls = [...(cricketData.lastBalls || [])];
-  
+
   let ballLabel = '';
   let isLegalBall = true;
-  
-  switch(ballType) {
+
+  switch (ballType) {
     case 'dot':
       ballLabel = '0';
       break;
@@ -38,9 +38,13 @@ export const updateCricketScore = (ballType, runs = 0, cricketData) => {
       innings.wickets += 1;
       break;
     case 'wide':
-      ballLabel = 'WD';
-      innings.runs += 1;
-      innings.extras += 1;
+      if (runs > 0) {
+        ballLabel = `WD+${runs}`;
+      } else {
+        ballLabel = 'WD';
+      }
+      innings.runs += 1 + runs; // 1 extra for wide, plus batsman runs
+      innings.extras += 1; // only 1 extra for wide
       isLegalBall = false;
       break;
     case 'noball':
@@ -67,12 +71,12 @@ export const updateCricketScore = (ballType, runs = 0, cricketData) => {
       ballLabel = runs.toString();
       innings.runs += runs;
   }
-  
+
   // Add ball to current over and last balls
   currentOver.push(ballLabel);
   lastBalls.push(ballLabel);
   if (lastBalls.length > 30) lastBalls.shift();
-  
+
   // Update ball count only for legal balls
   if (isLegalBall) {
     innings.balls += 1;
@@ -86,15 +90,15 @@ export const updateCricketScore = (ballType, runs = 0, cricketData) => {
   } else {
     innings.currentOver = currentOver;
   }
-  
+
   console.log('After update - innings.currentOver:', innings.currentOver);
   console.log('isLegalBall:', isLegalBall);
-  
+
   const updates = {
     [inningsKey]: innings,
     lastBalls: lastBalls
   };
-  
+
   // Check if team 2 has won (reached target)
   if (currentInnings === 2) {
     const target = (cricketData.innings1?.runs || 0) + 1;
@@ -103,7 +107,7 @@ export const updateCricketScore = (ballType, runs = 0, cricketData) => {
       updates.winner = cricketData.team2 || 'Team 2';
     }
   }
-  
+
   // Check if innings is complete (all out or overs finished)
   if (innings.wickets >= 10 || innings.overs >= cricketData.totalOvers) {
     if (currentInnings === 1) {
@@ -120,7 +124,7 @@ export const updateCricketScore = (ballType, runs = 0, cricketData) => {
       }
     }
   }
-  
+
   updateSportScore('cricket', updates);
   return innings;
 };
@@ -148,7 +152,7 @@ export const undoLastBall = (cricketData) => {
   const innings = { ...cricketData[inningsKey] };
   const currentOver = [...(innings.currentOver || [])];
   const lastBalls = [...(cricketData.lastBalls || [])];
-  
+
   if (lastBalls.length === 0) return;
 
   const lastBall = lastBalls.pop();
@@ -170,6 +174,15 @@ export const undoLastBall = (cricketData) => {
     innings.sixes = Math.max(0, innings.sixes - 1);
   } else if (lastBall === 'WD') {
     innings.runs = Math.max(0, innings.runs - 1);
+    innings.extras = Math.max(0, innings.extras - 1);
+    shouldUndoBall = false;
+    innings.currentOver = currentOver;
+    updateSportScore('cricket', { [inningsKey]: innings, lastBalls });
+    return;
+  } else if (lastBall && lastBall.startsWith('WD+')) {
+    // WD+<runs> format
+    const runs = parseInt(lastBall.split('+')[1]) || 0;
+    innings.runs = Math.max(0, innings.runs - (1 + runs));
     innings.extras = Math.max(0, innings.extras - 1);
     shouldUndoBall = false;
     innings.currentOver = currentOver;
@@ -203,8 +216,12 @@ export const undoLastBall = (cricketData) => {
   // Adjust ball count only if not wide or no ball
   if (shouldUndoBall) {
     if (innings.balls === 0) {
-      innings.overs = Math.max(0, innings.overs - 1);
-      innings.balls = 5;
+      if (innings.overs > 0) {
+        innings.overs = Math.max(0, innings.overs - 1);
+        innings.balls = 5;
+      } else {
+        innings.balls = 0;
+      }
     } else {
       innings.balls = Math.max(0, innings.balls - 1);
     }

@@ -274,10 +274,13 @@ export default function CricketScorePanel({ sport, updateScore, getStatusColor, 
           {/* Extras & Wicket Row */}
           <div>
             <p className="text-slate-400 text-xs mb-2 font-medium">EXTRAS & WICKET</p>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-6 gap-2">
               <button
                 disabled={isMatchCompleted}
-                onClick={() => handleBall('wide')}
+                onClick={() => {
+                  const runs = prompt('Wide par kitne run bane? (0 for only extra)', '0');
+                  handleBall('wide', parseInt(runs) || 0);
+                }}
                 className="h-14 bg-yellow-500 hover:bg-yellow-600 text-black rounded-xl text-sm font-bold transition-all active:scale-95 disabled:cursor-not-allowed"
               >
                 WIDE
