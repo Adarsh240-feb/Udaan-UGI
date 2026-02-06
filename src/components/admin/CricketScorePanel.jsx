@@ -312,6 +312,16 @@ export default function CricketScorePanel({ sport, updateScore, getStatusColor, 
               >
                 WICKET
               </button>
+              <button
+                disabled={isMatchCompleted}
+                onClick={() => {
+                  const runs = prompt('Run out par kitne run bane? (0 for only wicket)', '0');
+                  handleBall('runout', parseInt(runs) || 0);
+                }}
+                className="h-14 bg-red-700 hover:bg-red-800 text-white rounded-xl text-sm font-bold transition-all active:scale-95 shadow-lg shadow-red-700/30 disabled:cursor-not-allowed"
+              >
+                RUN OUT
+              </button>
             </div>
           </div>
         </div>

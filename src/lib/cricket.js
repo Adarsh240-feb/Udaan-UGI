@@ -16,6 +16,15 @@ export const updateCricketScore = (ballType, runs = 0, cricketData) => {
   let isLegalBall = true;
 
   switch (ballType) {
+    case 'runout':
+      if (runs > 0) {
+        ballLabel = `RO+${runs}`;
+      } else {
+        ballLabel = 'RO';
+      }
+      innings.runs += runs;
+      innings.wickets += 1;
+      break;
     case 'dot':
       ballLabel = '0';
       break;
@@ -161,7 +170,6 @@ export const undoLastBall = (cricketData) => {
   // For all balls except wide and no ball, undo the ball/over as well
   let shouldUndoBall = true;
 
-  // Reverse the ball effect
   if (lastBall === '0') {
     // Dot ball, just remove
   } else if (lastBall === 'W') {
@@ -179,6 +187,14 @@ export const undoLastBall = (cricketData) => {
     innings.currentOver = currentOver;
     updateSportScore('cricket', { [inningsKey]: innings, lastBalls });
     return;
+
+  } else if (lastBall && lastBall.startsWith('RO+')) {
+    // RO+<runs> format
+    const runs = parseInt(lastBall.split('+')[1]) || 0;
+    innings.runs = Math.max(0, innings.runs - runs);
+    innings.wickets = Math.max(0, innings.wickets - 1);
+  } else if (lastBall === 'RO') {
+    innings.wickets = Math.max(0, innings.wickets - 1);
   } else if (lastBall && lastBall.startsWith('WD+')) {
     // WD+<runs> format
     const runs = parseInt(lastBall.split('+')[1]) || 0;
