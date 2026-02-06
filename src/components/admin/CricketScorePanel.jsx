@@ -284,7 +284,10 @@ export default function CricketScorePanel({ sport, updateScore, getStatusColor, 
               </button>
               <button
                 disabled={isMatchCompleted}
-                onClick={() => handleBall('noball')}
+                onClick={() => {
+                  const runs = prompt('No ball par kitne run bane? (0 for only extra)', '0');
+                  handleBall('noball', parseInt(runs) || 0);
+                }}
                 className="h-14 bg-yellow-500 hover:bg-yellow-600 text-black rounded-xl text-sm font-bold transition-all active:scale-95 disabled:cursor-not-allowed"
               >
                 NO BALL

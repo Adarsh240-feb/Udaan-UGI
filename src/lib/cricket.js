@@ -44,9 +44,13 @@ export const updateCricketScore = (ballType, runs = 0, cricketData) => {
       isLegalBall = false;
       break;
     case 'noball':
-      ballLabel = 'NB';
-      innings.runs += 1;
-      innings.extras += 1;
+      if (runs > 0) {
+        ballLabel = `NB+${runs}`;
+      } else {
+        ballLabel = 'NB';
+      }
+      innings.runs += 1 + runs; // 1 extra for no ball, plus batsman runs
+      innings.extras += 1; // only 1 extra for no ball
       isLegalBall = false;
       break;
     case 'bye':
@@ -146,45 +150,66 @@ export const undoLastBall = (cricketData) => {
   const lastBalls = [...(cricketData.lastBalls || [])];
   
   if (lastBalls.length === 0) return;
-  
+
   const lastBall = lastBalls.pop();
   if (currentOver.length > 0) currentOver.pop();
-  
+
+  // For all balls except wide and no ball, undo the ball/over as well
+  let shouldUndoBall = true;
+
   // Reverse the ball effect
   if (lastBall === '0') {
     // Dot ball, just remove
   } else if (lastBall === 'W') {
-    innings.wickets -= 1;
+    innings.wickets = Math.max(0, innings.wickets - 1);
   } else if (lastBall === '4') {
-    innings.runs -= 4;
-    innings.fours -= 1;
+    innings.runs = Math.max(0, innings.runs - 4);
+    innings.fours = Math.max(0, innings.fours - 1);
   } else if (lastBall === '6') {
-    innings.runs -= 6;
-    innings.sixes -= 1;
-  } else if (lastBall === 'WD' || lastBall === 'NB') {
-    innings.runs -= 1;
-    innings.extras -= 1;
-    // No ball count change for extras
+    innings.runs = Math.max(0, innings.runs - 6);
+    innings.sixes = Math.max(0, innings.sixes - 1);
+  } else if (lastBall === 'WD') {
+    innings.runs = Math.max(0, innings.runs - 1);
+    innings.extras = Math.max(0, innings.extras - 1);
+    shouldUndoBall = false;
     innings.currentOver = currentOver;
     updateSportScore('cricket', { [inningsKey]: innings, lastBalls });
     return;
-  } else if (lastBall.startsWith('B') || lastBall.startsWith('LB')) {
+  } else if (lastBall && lastBall.startsWith('NB+')) {
+    // NB+<runs> format
+    const runs = parseInt(lastBall.split('+')[1]) || 0;
+    innings.runs = Math.max(0, innings.runs - (1 + runs));
+    innings.extras = Math.max(0, innings.extras - 1);
+    shouldUndoBall = false;
+    innings.currentOver = currentOver;
+    updateSportScore('cricket', { [inningsKey]: innings, lastBalls });
+    return;
+  } else if (lastBall === 'NB') {
+    innings.runs = Math.max(0, innings.runs - 1);
+    innings.extras = Math.max(0, innings.extras - 1);
+    shouldUndoBall = false;
+    innings.currentOver = currentOver;
+    updateSportScore('cricket', { [inningsKey]: innings, lastBalls });
+    return;
+  } else if (lastBall && (lastBall.startsWith('B') || lastBall.startsWith('LB'))) {
     const runs = parseInt(lastBall.replace(/[^0-9]/g, '')) || 0;
-    innings.runs -= runs;
-    innings.extras -= runs;
+    innings.runs = Math.max(0, innings.runs - runs);
+    innings.extras = Math.max(0, innings.extras - runs);
   } else {
     const runs = parseInt(lastBall) || 0;
-    innings.runs -= runs;
+    innings.runs = Math.max(0, innings.runs - runs);
   }
-  
-  // Adjust ball count
-  if (innings.balls === 0) {
-    innings.overs -= 1;
-    innings.balls = 5;
-  } else {
-    innings.balls -= 1;
+
+  // Adjust ball count only if not wide or no ball
+  if (shouldUndoBall) {
+    if (innings.balls === 0) {
+      innings.overs = Math.max(0, innings.overs - 1);
+      innings.balls = 5;
+    } else {
+      innings.balls = Math.max(0, innings.balls - 1);
+    }
   }
-  
+
   innings.currentOver = currentOver;
   updateSportScore('cricket', { [inningsKey]: innings, lastBalls });
 };

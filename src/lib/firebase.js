@@ -47,13 +47,6 @@ export const SPORT_ADMINS = {
     label: 'Basketball Admin',
     icon: '🏀'
   },
-  kabaddi: { 
-    username: import.meta.env.VITE_KABADDI_ADMIN_USERNAME, 
-    password: import.meta.env.VITE_KABADDI_ADMIN_PASSWORD, 
-    sportIds: ['kabaddi_boys', 'kabaddi_girls'], 
-    label: 'Kabaddi Admin',
-    icon: '🤼'
-  },
   khokho: { 
     username: import.meta.env.VITE_KHOKHO_ADMIN_USERNAME, 
     password: import.meta.env.VITE_KHOKHO_ADMIN_PASSWORD, 
@@ -138,8 +131,6 @@ export const initialSportsData = [
   { id: 'volleyball_girls', name: 'Volleyball 🏐', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'basketball_boys', name: 'Basketball 🏀', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'basketball_girls', name: 'Basketball 🏀', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'kabaddi_boys', name: 'Kabaddi 🤼', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'kabaddi_girls', name: 'Kabaddi 🤼', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'khokho_boys', name: 'Kho-Kho 🏃', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'khokho_girls', name: 'Kho-Kho 🏃', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'tugofwar_boys', name: 'Tug of War 🪢', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
@@ -200,17 +191,6 @@ export const sportTeams = {
     label: 'Team',
     options: ['Sparks', 'Storm', 'Mercury', 'Sky', 'Wings', 'Aces', 'Dream', 'Fever']
   },
-  // Team Sports - Kabaddi
-  kabaddi_boys: {
-    type: 'team',
-    label: 'Team',
-    options: ['Raiders', 'Defenders', 'Warriors', 'Tigers', 'Bulls', 'Yoddhas', 'Pirates', 'Titans']
-  },
-  kabaddi_girls: {
-    type: 'team',
-    label: 'Team',
-    options: ['Amazons', 'Valkyries', 'Spartans', 'Gladiators', 'Queens', 'Legends', 'Divas', 'Rebels']
-  },
   // Team Sports - Kho-Kho
   khokho_boys: {
     type: 'team',
@@ -221,17 +201,6 @@ export const sportTeams = {
     type: 'team',
     label: 'Team',
     options: ['Sprinters A', 'Sprinters B', 'Dashers A', 'Dashers B', 'Bolts A', 'Bolts B', 'Jets A', 'Jets B']
-  },
-  // Team Sports - Tug of War
-  tugofwar_boys: {
-    type: 'team',
-    label: 'Team',
-    options: ['Power A', 'Power B', 'Strength A', 'Strength B', 'Force A', 'Force B', 'Might A', 'Might B']
-  },
-  tugofwar_girls: {
-    type: 'team',
-    label: 'Team',
-    options: ['Unity A', 'Unity B', 'Grip A', 'Grip B', 'Pull A', 'Pull B', 'Strong A', 'Strong B']
   },
   // Solo/Doubles - Badminton (Participant Names)
   badminton_boys: {
