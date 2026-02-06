@@ -1,8 +1,18 @@
 // Cricket Score Card Component - Optimized for large horizontal displays
 export default function CricketScoreCard({ sport }) {
   const currentInnings = sport.currentInnings || 1;
-  const innings1 = sport.innings1 || { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] };
-  const innings2 = sport.innings2 || { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] };
+  const rawInnings1 = sport.innings1 || { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] };
+  const rawInnings2 = sport.innings2 || { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] };
+  
+  // Ensure currentOver is always an array (Firebase might convert it to object)
+  const getOverArray = (over) => {
+    if (!over) return [];
+    return Array.isArray(over) ? over : Object.values(over);
+  };
+  
+  const innings1 = { ...rawInnings1, currentOver: getOverArray(rawInnings1.currentOver) };
+  const innings2 = { ...rawInnings2, currentOver: getOverArray(rawInnings2.currentOver) };
+  
   const currentInningsData = currentInnings === 1 ? innings1 : innings2;
   const battingTeam = currentInnings === 1 ? sport.team1 : sport.team2;
   

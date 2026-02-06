@@ -5,11 +5,28 @@ import { updateCricketScore, undoLastBall, switchCricketInnings, resetCricketInn
 // Cricket Score Panel Component for Admin
 export default function CricketScorePanel({ sport, updateScore, getStatusColor, getStatusText }) {
   const currentInnings = sport.currentInnings || 1;
-  const innings = sport[`innings${currentInnings}`] || { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] };
+  const rawInnings = sport[`innings${currentInnings}`] || { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] };
+  
+  // Ensure currentOver is always an array (Firebase might convert it to object)
+  const currentOverData = rawInnings.currentOver || [];
+  const currentOverArray = Array.isArray(currentOverData) ? currentOverData : Object.values(currentOverData);
+  
+  const innings = {
+    ...rawInnings,
+    currentOver: currentOverArray
+  };
+  
   const battingTeam = currentInnings === 1 ? sport.team1 : sport.team2;
   const sportConfig = getOptionsForSport('cricket');
   
+  // Debug log
+  console.log('=== CricketScorePanel Debug ===');
+  console.log('rawInnings.currentOver:', rawInnings.currentOver);
+  console.log('currentOverArray:', currentOverArray);
+  console.log('innings.currentOver:', innings.currentOver);
+  
   const handleBall = (type, runs = 0) => {
+    console.log('handleBall called with type:', type);
     updateCricketScore(type, runs, sport);
   };
 

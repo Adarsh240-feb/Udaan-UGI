@@ -3,6 +3,9 @@ import { updateSportScore } from './firebase';
 
 // Update cricket score with ball-by-ball tracking
 export const updateCricketScore = (ballType, runs = 0, cricketData) => {
+  console.log('=== updateCricketScore called ===');
+  console.log('ballType:', ballType, 'runs:', runs);
+  
   const currentInnings = cricketData.currentInnings;
   const inningsKey = `innings${currentInnings}`;
   const innings = { ...cricketData[inningsKey] };
@@ -64,7 +67,7 @@ export const updateCricketScore = (ballType, runs = 0, cricketData) => {
   // Add ball to current over and last balls
   currentOver.push(ballLabel);
   lastBalls.push(ballLabel);
-  if (lastBalls.length > 12) lastBalls.shift();
+  if (lastBalls.length > 30) lastBalls.shift();
   
   // Update ball count only for legal balls
   if (isLegalBall) {
@@ -79,6 +82,9 @@ export const updateCricketScore = (ballType, runs = 0, cricketData) => {
   } else {
     innings.currentOver = currentOver;
   }
+  
+  console.log('After update - innings.currentOver:', innings.currentOver);
+  console.log('isLegalBall:', isLegalBall);
   
   const updates = {
     [inningsKey]: innings,
