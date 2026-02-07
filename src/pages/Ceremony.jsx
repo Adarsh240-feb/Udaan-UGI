@@ -17,7 +17,6 @@ const closingEvents = [
   { time: '6:10 PM', event: 'Prize Distribution (Medals, Certificates)', icon: Award },
   { time: '6:40 PM', event: 'Trophy Presentation to Winner College', icon: Trophy },
   { time: '6:50 PM', event: 'Vote of Thanks + Extinguishing of UDAAN Flame', icon: Flame },
-  { time: '7:00 PM', event: 'Cultural Performance / DJ Night / Photo Session', icon: PartyPopper }
 ];
 
 export default function Ceremony() {
@@ -50,7 +49,7 @@ export default function Ceremony() {
             <Badge className="mb-3 sm:mb-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-0 text-[10px] sm:text-xs">Day 1</Badge>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-900 dark:text-white mb-2">Opening Ceremony</h2>
             <p className="text-muted-foreground text-xs sm:text-sm">20th February 2026 • 9:00 AM – 10:00 AM</p>
-            <p className="text-blue-600 font-medium mt-1 sm:mt-2 text-xs sm:text-sm">Venue: Main Ground, UIT Campus</p>
+            <p className="text-blue-600 font-medium mt-1 sm:mt-2 text-xs sm:text-sm">Venue: UCER Campus</p>
           </div>
           
           <div className="max-w-3xl mx-auto">
@@ -223,7 +222,7 @@ export default function Ceremony() {
             <Card className="border-0 shadow-md bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-900/20 px-8 py-4 dark:bg-gray-800">
               <div className="flex items-center gap-3">
                 <Flag className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                <span className="font-medium text-blue-800 dark:text-blue-300">UIT Campus, Prayagraj</span>
+                <span className="font-medium text-blue-800 dark:text-blue-300">UGI Campus, Naini, Prayagraj</span>
               </div>
             </Card>
           </div>

@@ -2,55 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Modern Teal/Cyan & Purple Theme */
 :root {
   --radius: 0.625rem;
-  --background: 210 50% 98%;
-  --foreground: 215 50% 20%;
+  --background: 185 60% 98%; /* light cyan */
+  --foreground: 240 40% 18%; /* deep navy */
   --card: 0 0% 100%;
-  --card-foreground: 215 50% 20%;
+  --card-foreground: 240 40% 18%;
   --popover: 0 0% 100%;
-  --popover-foreground: 215 50% 20%;
-  --primary: 0 75% 50%;
+  --popover-foreground: 240 40% 18%;
+  --primary: 200 100% 45%; /* vibrant cyan */
   --primary-foreground: 0 0% 100%;
-  --secondary: 215 60% 55%;
+  --secondary: 265 80% 65%; /* soft purple */
   --secondary-foreground: 0 0% 100%;
-  --muted: 210 40% 94%;
-  --muted-foreground: 215 30% 45%;
-  --accent: 215 70% 50%;
+  --muted: 185 40% 94%;
+  --muted-foreground: 240 30% 45%;
+  --accent: 265 80% 60%; /* purple accent */
   --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --border: 215 30% 85%;
-  --input: 215 30% 90%;
-  --ring: 0 75% 50%;
-  --chart-1: 0 75% 50%;
-  --chart-2: 215 70% 50%;
+  --border: 200 40% 85%;
+  --input: 200 40% 90%;
+  --ring: 200 100% 45%;
+  --chart-1: 200 100% 45%;
+  --chart-2: 265 80% 60%;
   --chart-3: 150 60% 45%;
   --chart-4: 45 90% 50%;
-  --chart-5: 280 60% 55%;
+  --chart-5: 320 60% 60%;
 }
 
 /* Dark Mode Variables */
 .dark {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
-  --card: 222 47% 14%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222 47% 14%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 0 75% 55%;
+  --background: 240 32% 12%; /* deep navy */
+  --foreground: 185 60% 98%; /* light cyan */
+  --card: 240 32% 16%;
+  --card-foreground: 185 60% 98%;
+  --popover: 240 32% 16%;
+  --popover-foreground: 185 60% 98%;
+  --primary: 200 100% 45%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 215 60% 60%;
+  --secondary: 265 80% 65%;
   --secondary-foreground: 0 0% 100%;
-  --muted: 217 33% 20%;
-  --muted-foreground: 215 20% 65%;
-  --accent: 215 70% 55%;
+  --muted: 240 32% 18%;
+  --muted-foreground: 185 40% 80%;
+  --accent: 265 80% 60%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 63% 50%;
   --destructive-foreground: 0 0% 98%;
-  --border: 217 33% 25%;
-  --input: 217 33% 25%;
-  --ring: 0 75% 55%;
+  --border: 200 40% 30%;
+  --input: 200 40% 30%;
+  --ring: 200 100% 45%;
 }
 
 /* Akira Font */

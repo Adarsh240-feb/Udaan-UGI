@@ -40,9 +40,24 @@ export default function CricketScorePanel({ sport, updateScore, getStatusColor, 
     }
   };
 
-  const handleResetInnings = () => {
-    if (window.confirm(`Reset Innings ${currentInnings}? This cannot be undone.`)) {
-      resetCricketInnings(currentInnings);
+  // Remove innings reset, add match reset
+  const handleMatchReset = () => {
+    if (window.confirm('Reset entire match? This will clear all scores and start fresh.')) {
+      // Reset both innings, status, winner, teams, overs, etc.
+      import('../../lib/firebase').then(({ updateSportScore }) => {
+        updateSportScore('cricket', {
+          team1: '',
+          team2: '',
+          status: 'upcoming',
+          currentInnings: 1,
+          innings1: { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] },
+          innings2: { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] },
+          totalOvers: sport.totalOvers || 10,
+          battingTeam: 1,
+          winner: '',
+          lastBalls: []
+        });
+      });
     }
   };
 
@@ -145,13 +160,15 @@ export default function CricketScorePanel({ sport, updateScore, getStatusColor, 
               <ArrowLeftRight className="w-4 h-4" />
               Switch Innings
             </button>
-            <button
-              onClick={handleResetInnings}
-              className="flex items-center gap-1 px-3 py-1.5 bg-red-500/20 hover:bg-red-500/30 rounded-lg text-red-400 text-sm font-medium transition-colors"
-            >
-              <RefreshCw className="w-4 h-4" />
-              Reset
-            </button>
+            {isMatchCompleted && (
+              <button
+                onClick={handleMatchReset}
+                className="flex items-center gap-1 px-3 py-1.5 bg-red-500 hover:bg-red-600 rounded-lg text-white text-sm font-medium transition-colors"
+              >
+                <RefreshCw className="w-4 h-4" />
+                Reset Match
+              </button>
+            )}
           </div>
         </div>
 

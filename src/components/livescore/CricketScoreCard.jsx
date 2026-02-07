@@ -46,129 +46,13 @@ export default function CricketScoreCard({ sport }) {
 
   // Show winning animation
   if (winner || (isMatchCompleted && winMessage)) {
+    // Show only a simple centered winner message
     return (
-      <div className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-2xl w-full max-w-none relative">
-        {/* Confetti Animation */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute animate-confetti"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${3 + Math.random() * 2}s`,
-              }}
-            >
-              <div 
-                className="w-3 h-3 lg:w-4 lg:h-4"
-                style={{
-                  backgroundColor: ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#98D8C8'][Math.floor(Math.random() * 8)],
-                  transform: `rotate(${Math.random() * 360}deg)`,
-                }}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Winner Header */}
-        <div className="bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-500 px-6 py-4 lg:px-8 lg:py-6 animate-pulse">
-          <div className="flex items-center justify-center gap-4">
-            <span className="text-4xl lg:text-6xl animate-bounce">🏆</span>
-            <div className="text-center">
-              <h3 className="text-3xl lg:text-5xl xl:text-6xl font-black text-white drop-shadow-lg">MATCH WINNER!</h3>
-              <p className="text-yellow-100 text-lg lg:text-xl">Cricket 🏏</p>
-            </div>
-            <span className="text-4xl lg:text-6xl animate-bounce" style={{ animationDelay: '0.2s' }}>🏆</span>
-          </div>
-        </div>
-
-        <div className="p-6 lg:p-10 xl:p-12">
-          {/* Winner Announcement */}
-          <div className="text-center mb-8">
-            <div className="inline-block animate-bounce mb-4">
-              <span className="text-6xl lg:text-8xl">🎉</span>
-            </div>
-            <h2 className="text-4xl lg:text-6xl xl:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-400 mb-4 animate-pulse">
-              {winner || 'Match Tied'}
-            </h2>
-            <p className="text-2xl lg:text-3xl xl:text-4xl text-white font-bold">
-              {winMessage}
-            </p>
-          </div>
-
-          {/* Final Scores */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {/* Team 1 */}
-            <div className={`rounded-2xl p-6 lg:p-8 ${winner === (sport.team1 || 'Team 1') ? 'bg-gradient-to-br from-yellow-500/30 to-amber-500/30 border-2 border-yellow-500 shadow-lg shadow-yellow-500/20' : 'bg-slate-700/50'}`}>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-2xl lg:text-3xl font-bold text-white">{sport.team1 || 'Team 1'}</h3>
-                {winner === (sport.team1 || 'Team 1') && <span className="text-4xl animate-bounce">👑</span>}
-              </div>
-              <div className="text-center">
-                <span className="text-6xl lg:text-8xl font-black text-white">{innings1.runs}</span>
-                <span className="text-3xl lg:text-4xl text-slate-400">/{innings1.wickets}</span>
-              </div>
-              <p className="text-center text-slate-400 text-lg lg:text-xl mt-2">
-                ({innings1.overs}.{innings1.balls} overs)
-              </p>
-              <div className="flex justify-center gap-6 mt-4">
-                <div className="text-center">
-                  <p className="text-blue-400 text-2xl lg:text-3xl font-bold">{innings1.fours || 0}</p>
-                  <p className="text-slate-400 text-sm">Fours</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-purple-400 text-2xl lg:text-3xl font-bold">{innings1.sixes || 0}</p>
-                  <p className="text-slate-400 text-sm">Sixes</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Team 2 */}
-            <div className={`rounded-2xl p-6 lg:p-8 ${winner === (sport.team2 || 'Team 2') ? 'bg-gradient-to-br from-yellow-500/30 to-amber-500/30 border-2 border-yellow-500 shadow-lg shadow-yellow-500/20' : 'bg-slate-700/50'}`}>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-2xl lg:text-3xl font-bold text-white">{sport.team2 || 'Team 2'}</h3>
-                {winner === (sport.team2 || 'Team 2') && <span className="text-4xl animate-bounce">👑</span>}
-              </div>
-              <div className="text-center">
-                <span className="text-6xl lg:text-8xl font-black text-white">{innings2.runs}</span>
-                <span className="text-3xl lg:text-4xl text-slate-400">/{innings2.wickets}</span>
-              </div>
-              <p className="text-center text-slate-400 text-lg lg:text-xl mt-2">
-                ({innings2.overs}.{innings2.balls} overs)
-              </p>
-              <div className="flex justify-center gap-6 mt-4">
-                <div className="text-center">
-                  <p className="text-blue-400 text-2xl lg:text-3xl font-bold">{innings2.fours || 0}</p>
-                  <p className="text-slate-400 text-sm">Fours</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-purple-400 text-2xl lg:text-3xl font-bold">{innings2.sixes || 0}</p>
-                  <p className="text-slate-400 text-sm">Sixes</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Celebration emojis */}
-          <div className="flex justify-center gap-4 mt-8 text-4xl lg:text-6xl">
-            <span className="animate-bounce" style={{ animationDelay: '0s' }}>🎊</span>
-            <span className="animate-bounce" style={{ animationDelay: '0.1s' }}>🎉</span>
-            <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>🏏</span>
-            <span className="animate-bounce" style={{ animationDelay: '0.3s' }}>🎉</span>
-            <span className="animate-bounce" style={{ animationDelay: '0.4s' }}>🎊</span>
-          </div>
-        </div>
-
-        <style>{`
-          @keyframes confetti {
-            0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-          }
-          .animate-confetti {
-            animation: confetti 5s linear infinite;
-          }
-        `}</style>
+      <div className="min-h-[60vh] flex items-center justify-center bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl w-full max-w-none">
+        <h1 className="text-4xl lg:text-6xl font-black text-emerald-400 text-center py-32">
+          {winner || 'Match Tied'}<br />
+          <span className="text-white text-2xl lg:text-3xl font-bold mt-4 block">{winMessage}</span>
+        </h1>
       </div>
     );
   }

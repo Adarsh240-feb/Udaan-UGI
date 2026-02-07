@@ -76,7 +76,7 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full animate-fade-in-up delay-400">
               <MapPin className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" />
-              <span className="text-sm sm:text-base">UIT & UCER Campuses</span>
+              <span className="text-sm sm:text-base">UGI Campus, Naini, Prayagraj</span>
             </div>
             <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full animate-fade-in-right delay-500">
               <Trophy className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" />
