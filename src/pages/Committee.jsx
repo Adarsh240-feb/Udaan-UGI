@@ -6,67 +6,67 @@ import { Badge } from '../components/ui/badge';
 const managementCommittee = [
   {
     designation: 'Chairman',
-    image: '/images/organizers/chairman.jpg',
+    image: '/images/chairman.jpeg',
   },
   {
     designation: 'President',
-    image: '/images/organizers/president.jpg',
+    image: '/images/President.jpeg',
   },
   {
     designation: 'Vice Chairman',
-    image: '/images/organizers/vice-chairman.jpg',
+    image: '/images/Vice Chairman.jpeg',
   },
   {
     designation: 'Senior Vice President',
-    image: '/images/organizers/senior-vice-president.jpg',
+    image: '/images/Senior Vice President.jpeg',
   },
 ];
 
 // Principals (UIM, UIP, UIT, UCER, FUGS)
 const principals = [
   {
-    designation: 'Principal, UIM',
-    image: '/images/organizers/principal-uim.jpg',
+    designation: 'UIM',
+    image: '/images/principal-uim.jpeg',
   },
   {
-    designation: 'Principal, UIP',
-    image: '/images/organizers/principal-uip.jpg',
+    designation: 'UIP',
+    image: '/images/principal-uip.jpeg',
   },
   {
-    designation: 'Principal, UIT',
-    image: '/images/organizers/principal-uit.jpg',
+    designation: 'UIT',
+    image: '/images/principal-uit.jpeg',
   },
   {
-    designation: 'Principal, UCER',
-    image: '/images/organizers/principal-ucer.jpg',
+    designation: 'UCER',
+    image: '/images/principal-ucer.jpeg',
   },
   {
-    designation: 'Principal, FUGS',
-    image: '/images/organizers/principal-fugs.jpg',
+    designation: 'FUGS',
+    image: '/images/principal-fugs.jpeg',
   },
 ];
 
 // Coordinators (UIT, UCER, UIM, UIP, FUGS)
 const coordinators = [
   {
-    designation: 'Coordinator, UIT',
-    image: '/images/organizers/coordinator-uit.jpg',
+    designation: 'UIT',
+    image: '/images/coordinator-uit.jpeg',
   },
   {
-    designation: 'Coordinator, UCER',
-    image: '/images/organizers/coordinator-ucer.jpg',
+    designation: 'UCER',
+    image: '/images/coordinator-ucer.jpeg',
   },
   {
-    designation: 'Coordinator, UIM',
-    image: '/images/organizers/coordinator-uim.jpg',
+    designation: 'UIM',
+    image: '/images/coordinator-uim.jpeg',
   },
   {
-    designation: 'Coordinator, UIP',
-    image: '/images/organizers/coordinator-uip.jpg',
+    designation: 'UIP',
+    image: '/images/coordinator-uip.jpeg',
   },
   {
-    designation: 'Coordinator, FUGS',
-    image: '/images/organizers/coordinator-fugs.jpg',
+    designation: 'FUGS',
+    image: '/images/coordinator-fugs.jpg',
   },
 ];
 
@@ -74,11 +74,11 @@ const coordinators = [
 const sportsOfficers = [
   {
     designation: 'Sports Officer',
-    image: '/images/organizers/sports-officer1.jpg',
+    image: '/images/sports-officer1.jpeg',
   },
   {
     designation: 'Sports Officer',
-    image: '/images/organizers/sports-officer2.jpg',
+    image: '/images/sports-officer2.jpeg',
   },
 ];
 
@@ -86,13 +86,13 @@ const sportsOfficers = [
 const sportsAssistants = [
   {
     designation: 'Sports Assistant',
-    image: '/images/organizers/sports-assistant.jpg',
+    image: '/images/sports-assistant.jpeg',
   },
 ];
 
 const OrganizerCard = ({ person, size = 'medium', showBadge = true }) => {
   const sizeClasses = {
-    large: 'w-32 h-32 sm:w-40 sm:h-40',
+    large: 'w-32 h-32 sm:w-40 sm:h-40 mt-6', // Added top margin for large size
     medium: 'w-24 h-24 sm:w-32 sm:h-32',
     small: 'w-20 h-20 sm:w-24 sm:h-24',
   };
@@ -102,14 +102,27 @@ const OrganizerCard = ({ person, size = 'medium', showBadge = true }) => {
       <CardContent className="p-6 sm:p-8 flex flex-col items-center justify-center text-center">
         <div className="relative mb-4">
           <div className={`${sizeClasses[size]} rounded-full overflow-hidden mx-auto ring-4 ring-blue-300 dark:ring-blue-900 group-hover:ring-purple-400 dark:group-hover:ring-blue-700 transition-all shadow-lg`}>
-            <img
-              src={person.image}
-              alt={person.role}
-              className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-300"
-              onError={(e) => {
-                e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.role)}&background=3b82f6&color=fff&size=200`;
-              }}
-            />
+            {person.designation === 'UIT' ? (
+              <img
+                src={person.image}
+                alt={person.role}
+                className="w-full h-full object-cover object-center scale-125 group-hover:scale-135 transition-transform duration-300"
+                style={{ objectPosition: 'center' }}
+                onError={(e) => {
+                  e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.role)}&background=3b82f6&color=fff&size=200`;
+                }}
+              />
+            ) : (
+              <img
+                src={person.image}
+                alt={person.role}
+                className="w-full h-full object-cover object-top scale-110 group-hover:scale-125 transition-transform duration-300"
+                style={{ objectPosition: 'top' }}
+                onError={(e) => {
+                  e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.role)}&background=3b82f6&color=fff&size=200`;
+                }}
+              />
+            )}
           </div>
           {/* Role badge removed as per user request */}
         </div>
