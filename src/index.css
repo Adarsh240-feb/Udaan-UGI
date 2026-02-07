@@ -437,7 +437,8 @@
   }
   
   .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
+    @apply px-2 sm:px-4 md:px-8 lg:px-12 xl:px-20 2xl:px-32;
+  }
   }
   
   /* Responsive text */

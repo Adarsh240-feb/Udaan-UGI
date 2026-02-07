@@ -59,6 +59,11 @@ export default function Navbar() {
         ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg' 
         : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm'
     } border-b border-blue-100 dark:border-gray-700`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg' 
+          : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm'
+      } max-w-screen-2xl mx-auto w-full container-padding border-b border-blue-100 dark:border-gray-700`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}

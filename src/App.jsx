@@ -34,7 +34,7 @@ function App() {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
         <ScrollToTop />
         <Navbar />
-        <main className="pt-16">
+          <main className="pt-16 max-w-screen-2xl mx-auto w-full container-padding">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
