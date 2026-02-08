@@ -22,6 +22,16 @@ export default function LiveScore() {
     return () => unsubscribe;
   }, []);
 
+  // Keyboard navigation for left/right
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') goToPrev();
+      if (e.key === 'ArrowRight') goToNext();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [sports.length, currentIndex]);
+
   // Auto-slide every 10 seconds with progress
   useEffect(() => {
     if (sports.length === 0) return;
