@@ -80,7 +80,21 @@ export default function LiveScore() {
   const statusConfig = getStatusConfig(currentSport.status);
 
   return (
-    <div className="min-h-screen bg-slate-900 flex flex-col">
+    <div className="min-h-screen bg-slate-900 flex flex-col relative overflow-hidden">
+      {/* UGI Left Overlay */}
+      <div
+        className="fixed left-0 z-40 flex flex-col items-start w-1/3 pointer-events-none select-none"
+        style={{ top: '40px', left: '100px', marginTop: '0.5rem' }}
+      >
+        <img src="/images/united.png" alt="UGI Logo" className="w-56  ml-6 mt-2" />
+      </div>
+      {/* UDAAN Right Overlay */}
+      <div
+        className="fixed z-50 flex flex-col items-end pointer-events-none select-none"
+        style={{ top: '40px', right: '150px', width: '180px' }}
+      >
+        <img src="/images/udaan-logo-optimized.png" alt="UDAAN Logo" className="w-full max-w-[180px]" />
+      </div>
       {/* Progress Bar */}
       <div className="h-1 bg-slate-800">
         <div 
