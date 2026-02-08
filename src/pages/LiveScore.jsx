@@ -81,19 +81,39 @@ export default function LiveScore() {
 
   return (
     <div className="min-h-screen bg-slate-900 flex flex-col relative overflow-hidden">
-      {/* UGI Left Overlay */}
+      {/* UGI Left Overlay - Desktop/Tablet Only */}
       <div
-        className="fixed left-0 z-40 flex flex-col items-start w-1/3 pointer-events-none select-none"
+        className="fixed left-0 z-40 hidden sm:flex flex-col items-start w-1/3 pointer-events-none select-none"
         style={{ top: '40px', left: '100px', marginTop: '0.5rem' }}
       >
-        <img src="/images/united.png" alt="UGI Logo" className="w-56  ml-6 mt-2" />
+        <img src="/images/united.png" alt="UGI Logo" className="w-56 ml-6 mt-2" />
       </div>
-      {/* UDAAN Right Overlay */}
+      {/* UDAAN Right Overlay - Desktop/Tablet Only */}
       <div
-        className="fixed z-50 flex flex-col items-end pointer-events-none select-none"
+        className="fixed z-50 hidden sm:flex flex-col items-end pointer-events-none select-none"
         style={{ top: '40px', right: '150px', width: '180px' }}
       >
         <img src="/images/udaan-logo-optimized.png" alt="UDAAN Logo" className="w-full max-w-[180px]" />
+      </div>
+      {/* UGI Left Overlay - Mobile Only */}
+      <div
+        className="fixed left-2 top-2 z-40 flex sm:hidden flex-col items-start pointer-events-none select-none"
+      >
+        <img 
+          src="/images/united.png" 
+          alt="UGI Logo" 
+          className="w-16 h-16 object-contain"
+        />
+      </div>
+      {/* UDAAN Right Overlay - Mobile Only */}
+      <div
+        className="fixed right-2 top-2 z-50 flex sm:hidden flex-col items-end pointer-events-none select-none"
+      >
+        <img 
+          src="/images/udaan-logo-optimized.png" 
+          alt="UDAAN Logo" 
+          className="w-16 h-16 object-contain"
+        />
       </div>
       {/* Progress Bar */}
       <div className="h-1 bg-slate-800">
