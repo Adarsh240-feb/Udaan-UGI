@@ -93,7 +93,7 @@ export default function LiveScore() {
         className="fixed z-50 hidden sm:flex flex-col items-end pointer-events-none select-none"
         style={{ top: '40px', right: '150px', width: '180px' }}
       >
-        {/* <img src="/images/udaan-logo-optimized.png" alt="UDAAN Logo" className="w-full max-w-[180px]" /> */}
+        <img src="/images/udaan-logo-optimized.png" alt="UDAAN Logo" className="w-full max-w-[180px]" />
       </div>
       {/* UGI Left Overlay - Mobile Only */}
       <div
