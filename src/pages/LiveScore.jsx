@@ -93,7 +93,7 @@ export default function LiveScore() {
         className="fixed z-50 hidden sm:flex flex-col items-end pointer-events-none select-none"
         style={{ top: '40px', right: '150px', width: '180px' }}
       >
-        <img src="/images/udaan-logo-optimized.png" alt="UDAAN Logo" className="w-full max-w-[180px]" />
+        {/* <img src="/images/udaan-logo-optimized.png" alt="UDAAN Logo" className="w-full max-w-[180px]" /> */}
       </div>
       {/* UGI Left Overlay - Mobile Only */}
       <div
@@ -109,11 +109,11 @@ export default function LiveScore() {
       <div
         className="fixed right-2 top-2 z-50 flex sm:hidden flex-col items-end pointer-events-none select-none"
       >
-        <img 
+        {/* <img 
           src="/images/udaan-logo-optimized.png" 
           alt="UDAAN Logo" 
           className="w-16 h-16 object-contain"
-        />
+        /> */}
       </div>
       {/* Progress Bar */}
       <div className="h-1 bg-slate-800">
