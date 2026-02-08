@@ -103,7 +103,16 @@ export default function Sports() {
                         </Badge>
                       </td>
                       <td className="px-2 sm:px-4 py-3 sm:py-4 text-center">
-                        <Badge variant="outline" className={`text-[10px] sm:text-xs ${sport.venue === 'UIT' ? 'border-blue-500 text-blue-600' : 'border-red-500 text-red-600'}`}>
+                          <Badge
+                            variant="outline"
+                            className={`text-[10px] sm:text-xs ${
+                              sport.venue === 'FUGS'
+                                ? 'border-green-500 text-green-600 bg-green-50 dark:bg-green-900'
+                                : sport.venue === 'UIT'
+                                ? 'border-blue-500 text-blue-600'
+                                : 'border-red-500 text-red-600'
+                            }`}
+                          >
                           {sport.venue}
                         </Badge>
                       </td>
