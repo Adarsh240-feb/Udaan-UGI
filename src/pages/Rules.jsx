@@ -61,19 +61,19 @@ const sportsRules = [
       'Tie-Breaker: 3 minutes Overtime (OT)'
     ]
   },
-  {
-    sport: 'Kabaddi',
-    icon: '🤼',
-    category: 'Boys & Girls',
-    format: 'Open weight (College level)',
-    duration: '15 mins — 5 min break — 15 mins',
-    rules: [
-      'Raid Time: 30 Seconds strict',
-      'Bonus Line: Active when opposition has 6 or more defenders',
-      'Super Tackle: 2 Points awarded',
-      'Lobby: Active only after a touch'
-    ]
-  },
+  // {
+  //   sport: 'Kabaddi',
+  //   icon: '🤼',
+  //   category: 'Boys & Girls',
+  //   format: 'Open weight (College level)',
+  //   duration: '15 mins — 5 min break — 15 mins',
+  //   rules: [
+  //     'Raid Time: 30 Seconds strict',
+  //     'Bonus Line: Active when opposition has 6 or more defenders',
+  //     'Super Tackle: 2 Points awarded',
+  //     'Lobby: Active only after a touch'
+  //   ]
+  // },
   {
     sport: 'Kho-Kho',
     icon: '🏃',

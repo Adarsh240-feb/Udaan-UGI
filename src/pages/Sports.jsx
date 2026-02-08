@@ -9,7 +9,6 @@ const sportsData = [
   { sport: 'Volleyball', category: 'Girls', venue: 'UIT', teams: 8, squad: 7, total: 56, icon: '🏐' },
   { sport: 'Basketball', category: 'Girls', venue: 'UIT', teams: 8, squad: 6, total: 48, icon: '🏀' },
   { sport: 'Basketball', category: 'Boys', venue: 'UCER', teams: 8, squad: 6, total: 48, icon: '🏀' },
-  { sport: 'Kabaddi', category: 'Boys & Girls', venue: 'UIT', teams: 16, squad: 10, total: 160, icon: '🤼' },
   { sport: 'Kho-Kho', category: 'Boys & Girls', venue: 'UIT', teams: 16, squad: 10, total: 160, icon: '🏃' },
   { sport: 'Tug of War', category: 'Boys & Girls', venue: 'UIT', teams: 16, squad: 9, total: 144, icon: '🪢' },
   { sport: 'Badminton', category: 'Boys & Girls', venue: 'UCER', teams: 16, squad: 4, total: 64, icon: '🏸' },
@@ -210,7 +209,7 @@ export default function Sports() {
               </div>
               <div className="bg-white/10 dark:bg-gray-700/50 backdrop-blur-sm rounded-xl p-4">
                 <p className="text-sm text-blue-300 dark:text-gray-400">Total</p>
-                <p className="text-3xl font-bold text-yellow-400">~1,280</p>
+                <p className="text-3xl font-bold text-yellow-400">~1,120</p>
               </div>
             </div>
             <p className="text-blue-300 dark:text-gray-400 text-sm">

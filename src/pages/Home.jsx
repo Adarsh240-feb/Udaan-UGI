@@ -9,21 +9,20 @@ import { Card, CardContent } from '../components/ui/card';
 const sections = [
   { icon: Target, title: 'Vision & Objective', desc: 'Mission and goals of UDAAN', path: '/about', color: 'bg-red-500' },
   { icon: Users, title: 'Participating Teams', desc: 'The 8-team formula', path: '/teams', color: 'bg-blue-500' },
-  { icon: MapPin, title: 'Venues', desc: 'UIT & UCER campuses', path: '/venues', color: 'bg-green-500' },
+  { icon: MapPin, title: 'Venues', desc: 'UGI campuses', path: '/venues', color: 'bg-green-500' },
   { icon: Trophy, title: 'Tournament Format', desc: 'Knockout system', path: '/tournament', color: 'bg-yellow-500' },
   { icon: Zap, title: 'Sports Events', desc: '12+ sports categories', path: '/sports', color: 'bg-purple-500' },
   { icon: BookOpen, title: 'Rules & Regulations', desc: 'Technical handbook', path: '/rules', color: 'bg-pink-500' },
   { icon: Flame, title: 'Athletics', desc: 'Track & Field events', path: '/athletics', color: 'bg-orange-500' },
   { icon: Award, title: 'Awards', desc: 'Medals & trophies', path: '/awards', color: 'bg-cyan-500' },
-  { icon: Shield, title: 'Committee', desc: 'Roles & responsibilities', path: '/committee', color: 'bg-indigo-500' },
-  { icon: Calendar, title: 'Registration', desc: 'Selection & fees', path: '/registration', color: 'bg-teal-500' },
+  { icon: Shield, title: 'Organizers', desc: 'Roles & responsibilities', path: '/committee', color: 'bg-indigo-500' },
   { icon: PartyPopper, title: 'Ceremony', desc: 'Opening & closing', path: '/ceremony', color: 'bg-rose-500' },
 ];
 
 const stats = [
   { value: '12+', label: 'Sports' },
   { value: '8', label: 'Teams' },
-  { value: '1280+', label: 'Athletes' },
+  { value: '1120+', label: 'Athletes' },
   { value: '2', label: 'Days' },
 ];
 
@@ -218,7 +217,7 @@ export default function Home() {
               {[
                 { icon: Trophy, value: '🏅', label: 'Gold, Silver, Bronze' },
                 { icon: Award, value: '📜', label: 'Certificates for All' },
-                { icon: Users, value: '1280+', label: 'Athletes' },
+                { icon: Users, value: '1120+', label: 'Athletes' },
                 { icon: Zap, value: '12+', label: 'Sports Events' },
               ].map((item, i) => (
                 <div 

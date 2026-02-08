@@ -9,9 +9,7 @@ const venueA = {
   color: 'from-blue-500 to-blue-700',
   mapUrl: 'https://maps.app.goo.gl/obzDrBkn1Gi5MQN2A',
   sports: [
-    { name: 'Football', category: 'Boys', icon: '⚽' },
-    { name: 'Basketball', category: 'Boys & Girls', icon: '🏀' },
-    { name: 'Kabaddi', category: 'Boys & Girls', icon: '🤼' },
+    { name: 'Basketball', category: 'Boys', icon: '🏀' },
     { name: 'Kho-Kho', category: 'Boys & Girls', icon: '🏃' },
     { name: 'Athletics', category: 'Track & Field - Boys & Girls', icon: '🏃‍♂️' },
     { name: 'Tug of War', category: 'Boys & Girls', icon: '🪢' }
@@ -27,10 +25,23 @@ const venueB = {
   sports: [
     { name: 'Cricket', category: 'Boys', icon: '🏏' },
     { name: 'Volleyball', category: 'Boys & Girls', icon: '🏐' },
+    { name: 'Basketball', category: 'Girls', icon: '🏀' },
     { name: 'Badminton', category: 'Boys & Girls', icon: '🏸' },
     { name: 'Table Tennis', category: 'Boys & Girls', icon: '🏓' },
     { name: 'Chess', category: 'Open Category', icon: '♟️' },
     { name: 'Carrom', category: 'Open Category', icon: '🎯' }
+  ]
+};
+
+const venueC = {
+  name: 'FUGS Campus',
+  subtitle: 'The Grounds',
+  description: 'The main campus for the university',
+  color: 'from-green-500 to-green-700',
+  mapUrl: 'https://maps.app.goo.gl/NfQfBEiqsr2dDizx6',
+  sports: [
+    { name: 'Football', category: 'Boys', icon: '⚽' },
+
   ]
 };
 
@@ -63,7 +74,7 @@ export default function Venues() {
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-8 text-center">
             <div className="flex items-center justify-center gap-2 animate-fade-in-up">
               <MapPin className="w-4 sm:w-5 h-4 sm:h-5 text-blue-600 dark:text-blue-400" />
-              <span className="text-sm sm:text-base text-muted-foreground">2 Campuses</span>
+              <span className="text-sm sm:text-base text-muted-foreground">3 Campuses</span>
             </div>
             <div className="flex items-center justify-center gap-2 animate-fade-in-up delay-100">
               <Zap className="w-4 sm:w-5 h-4 sm:h-5 text-red-600 dark:text-red-400" />
@@ -176,6 +187,58 @@ export default function Venues() {
                 <div className="space-y-2 sm:space-y-3">
                   {venueB.sports.map((sport, index) => (
                     <div key={index} className="flex items-center justify-between p-2 sm:p-3 bg-red-50 dark:bg-red-900/30 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/50 transition-colors">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <span className="text-lg sm:text-2xl">{sport.icon}</span>
+                        <span className="font-medium text-blue-900 dark:text-white text-xs sm:text-sm md:text-base">{sport.name}</span>
+                      </div>
+                      <Badge variant="secondary" className="text-[10px] sm:text-xs">{sport.category}</Badge>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Venue C - FUGS */}
+            <Card className="border-0 shadow-xl overflow-hidden animate-fade-in-up delay-400 dark:bg-gray-800">
+              <div className={`h-2 sm:h-3 bg-gradient-to-r ${venueC.color}`} />
+              <CardHeader className="bg-gradient-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-900 p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+                  <div className={`w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br ${venueC.color} flex items-center justify-center`}>
+                    <Building className="w-5 sm:w-6 md:w-7 h-5 sm:h-6 md:h-7 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <Badge className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 mb-2 text-[10px] sm:text-xs">📍 VENUE C</Badge>
+                    <a 
+                      href={venueC.mapUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    >
+                      <CardTitle className="text-lg sm:text-xl md:text-2xl text-blue-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                        {venueC.name}
+                      </CardTitle>
+                      <ExternalLink className="w-4 h-4 text-green-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                    <p className="text-sm sm:text-base md:text-lg text-green-600 dark:text-green-400 font-medium">{venueC.subtitle}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">{venueC.description}</p>
+                    <a 
+                      href={venueC.mapUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-2 text-xs sm:text-sm text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-medium transition-colors"
+                    >
+                      <MapPin className="w-3.5 h-3.5" />
+                      View on Google Maps
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="pt-4 sm:pt-6 p-4 sm:p-6">
+                <h4 className="font-semibold text-blue-900 dark:text-white mb-3 sm:mb-4 text-sm sm:text-base">Sports Events</h4>
+                <div className="space-y-2 sm:space-y-3">
+                  {venueC.sports.map((sport, index) => (
+                    <div key={index} className="flex items-center justify-between p-2 sm:p-3 bg-green-50 dark:bg-green-900/30 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/50 transition-colors">
                       <div className="flex items-center gap-2 sm:gap-3">
                         <span className="text-lg sm:text-2xl">{sport.icon}</span>
                         <span className="font-medium text-blue-900 dark:text-white text-xs sm:text-sm md:text-base">{sport.name}</span>

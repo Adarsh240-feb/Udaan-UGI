@@ -1,3 +1,4 @@
+import React from 'react';
 import { Clock, Calendar, Flag, Flame, Music, Trophy, Users, PartyPopper, Award } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
@@ -20,6 +21,31 @@ const closingEvents = [
 ];
 
 export default function Ceremony() {
+  // Auto-scroll effect
+  React.useEffect(() => {
+    let scrollInterval;
+    let direction = 'down';
+    const scrollStep = 2; // px per tick
+    const scrollDelay = 30; // ms per tick
+    function scrollLoop() {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (direction === 'down') {
+        if (window.scrollY < maxScroll) {
+          window.scrollBy(0, scrollStep);
+        } else {
+          direction = 'up';
+        }
+      } else {
+        if (window.scrollY > 0) {
+          window.scrollBy(0, -scrollStep);
+        } else {
+          direction = 'down';
+        }
+      }
+    }
+    scrollInterval = setInterval(scrollLoop, scrollDelay);
+    return () => clearInterval(scrollInterval);
+  }, []);
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
