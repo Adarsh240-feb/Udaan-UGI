@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge';
 
 const sportsData = [
-  { sport: 'Football', category: 'Boys', venue: 'UIT', teams: 8, squad: 9, total: 72, icon: '⚽' },
+  { sport: 'Football', category: 'Boys', venue: 'FUGS', teams: 8, squad: 9, total: 72, icon: '⚽' },
   { sport: 'Cricket', category: 'Boys', venue: 'UCER', teams: 8, squad: 12, total: 96, icon: '🏏' },
   { sport: 'Volleyball', category: 'Boys', venue: 'UCER', teams: 8, squad: 7, total: 56, icon: '🏐' },
   { sport: 'Volleyball', category: 'Girls', venue: 'UIT', teams: 8, squad: 7, total: 56, icon: '🏐' },
