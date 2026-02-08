@@ -1,9 +1,19 @@
 import { Plus, Minus } from 'lucide-react';
-import { getOptionsForSport, updateSportScore } from '../../lib/firebase';
+import { getOptionsForSport, updateSportScore, initialSportsData } from '../../lib/firebase';
 
 // Generic Score Panel Component for non-cricket sports
 export default function GenericScorePanel({ sport, getStatusColor, getStatusText }) {
-  
+
+  // Reset handler: resets all fields for this sport to initial values
+  const handleReset = () => {
+    const initial = initialSportsData.find(s => s.id === sport.id);
+    if (initial) {
+      // Remove id from update to avoid overwriting key
+      const { id, ...resetFields } = initial;
+      updateSportScore(sport.id, resetFields);
+    }
+  };
+
   const updateScore = (sportId, field, value) => {
     const updates = { [field]: value };
     updateSportScore(sportId, updates);
@@ -24,7 +34,18 @@ export default function GenericScorePanel({ sport, getStatusColor, getStatusText
   const sportConfig = getOptionsForSport(sport.id);
 
   return (
-    <div className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-xl">
+    <div className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-xl relative">
+            {/* Reset Button for completed matches */}
+            {sport.status === 'completed' && (
+              <div className="flex justify-end mt-2 mr-4">
+                <button
+                  onClick={handleReset}
+                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold shadow-lg z-20"
+                >
+                  Reset
+                </button>
+              </div>
+            )}
       {/* Match Header */}
       <div className="bg-slate-700/50 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">

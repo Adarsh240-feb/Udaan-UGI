@@ -1,7 +1,25 @@
 // Generic Score Card Component for non-cricket sports
 export default function GenericScoreCard({ sport }) {
+  // Determine winner if completed
+  let winner = null;
+  if (sport.status === 'completed') {
+    if (sport.score1 > sport.score2) winner = sport.team1 || 'Team 1';
+    else if (sport.score2 > sport.score1) winner = sport.team2 || 'Team 2';
+    else winner = 'Draw';
+  }
   return (
-    <div className="bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden shadow-2xl">
+    <div className="bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden shadow-2xl relative">
+      {/* Winner overlay */}
+      {winner && winner !== 'Draw' && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-30 bg-black/70">
+          <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-emerald-400 drop-shadow-lg mb-4">🏆 {winner} Wins!</div>
+        </div>
+      )}
+      {winner === 'Draw' && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-30 bg-black/70">
+          <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-yellow-300 drop-shadow-lg mb-4">🤝 Match Drawn</div>
+        </div>
+      )}
       <div className="p-6 sm:p-10">
         <div className="grid grid-cols-3 gap-4 items-center">
           {/* Team 1 */}
