@@ -54,13 +54,6 @@ export const SPORT_ADMINS = {
     label: 'Kho-Kho Admin',
     icon: '🏃'
   },
-  tugofwar: { 
-    username: import.meta.env.VITE_TUGOFWAR_ADMIN_USERNAME, 
-    password: import.meta.env.VITE_TUGOFWAR_ADMIN_PASSWORD, 
-    sportIds: ['tugofwar_boys', 'tugofwar_girls'], 
-    label: 'Tug of War Admin',
-    icon: '🪢'
-  },
   badminton: { 
     username: import.meta.env.VITE_BADMINTON_ADMIN_USERNAME, 
     password: import.meta.env.VITE_BADMINTON_ADMIN_PASSWORD, 
@@ -75,20 +68,6 @@ export const SPORT_ADMINS = {
     label: 'Table Tennis Admin',
     icon: '🏓'
   },
-  chess: { 
-    username: import.meta.env.VITE_CHESS_ADMIN_USERNAME, 
-    password: import.meta.env.VITE_CHESS_ADMIN_PASSWORD, 
-    sportIds: ['chess'], 
-    label: 'Chess Admin',
-    icon: '♟️'
-  },
-  carrom: { 
-    username: import.meta.env.VITE_CARROM_ADMIN_USERNAME, 
-    password: import.meta.env.VITE_CARROM_ADMIN_PASSWORD, 
-    sportIds: ['carrom'], 
-    label: 'Carrom Admin',
-    icon: '🎯'
-  }
 };
 
 // Validate admin login and return role info
@@ -133,14 +112,11 @@ export const initialSportsData = [
   { id: 'basketball_girls', name: 'Basketball 🏀', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'khokho_boys', name: 'Kho-Kho 🏃', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'khokho_girls', name: 'Kho-Kho 🏃', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'tugofwar_boys', name: 'Tug of War 🪢', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'tugofwar_girls', name: 'Tug of War 🪢', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'badminton_boys', name: 'Badminton 🏸', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'badminton_girls', name: 'Badminton 🏸', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'tabletennis_boys', name: 'Table Tennis 🏓', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
   { id: 'tabletennis_girls', name: 'Table Tennis 🏓', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'chess', name: 'Chess ♟️', category: 'Mixed', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'carrom', name: 'Carrom 🎯', category: 'Mixed', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
+  { id: 'football', name: 'Football ⚽', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
 ];
 
 // Teams list

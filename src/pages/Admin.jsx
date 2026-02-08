@@ -15,8 +15,6 @@ const sportCategories = [
   { id: 'khokho', label: 'Kho-Kho', icon: '🏃', sportIds: ['khokho_boys', 'khokho_girls'] },
   { id: 'badminton', label: 'Badminton', icon: '🏸', sportIds: ['badminton_boys', 'badminton_girls'] },
   { id: 'tabletennis', label: 'Table Tennis', icon: '🏓', sportIds: ['tabletennis_boys', 'tabletennis_girls'] },
-  { id: 'chess', label: 'Chess', icon: '♟️', sportIds: ['chess'] },
-  { id: 'carrom', label: 'Carrom', icon: '🎯', sportIds: ['carrom'] },
 ];
 
 export default function Admin() {
