@@ -249,7 +249,8 @@ export default function CricketScorePanel({ sport, updateScore, getStatusColor, 
                   ${ball === '6' ? 'bg-purple-500 text-white' : ''}
                   ${ball === '0' ? 'bg-slate-600 text-slate-300' : ''}
                   ${ball === 'WD' || ball === 'NB' ? 'bg-yellow-500 text-black' : ''}
-                  ${!['W', '4', '6', '0', 'WD', 'NB'].includes(ball) && !ball.startsWith('B') && !ball.startsWith('LB') ? 'bg-green-500 text-white' : ''}
+                  ${ball.startsWith('RO') ? 'bg-red-500 text-white' : ''}
+                  ${!['W', '4', '6', '0', 'WD', 'NB'].includes(ball) && !ball.startsWith('B') && !ball.startsWith('LB') && !ball.startsWith('RO') ? 'bg-green-500 text-white' : ''}
                   ${ball.startsWith('B') || ball.startsWith('LB') ? 'bg-orange-500 text-white' : ''}
                 `}
               >
