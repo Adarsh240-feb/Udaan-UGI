@@ -95,26 +95,6 @@ export default function LiveScore() {
       >
         <img src="/images/udaan-logo-optimized.png" alt="UDAAN Logo" className="w-full max-w-[180px]" />
       </div>
-        {/* UGI Left Overlay - Responsive */}
-        <div
-          className="fixed left-2 top-2 z-40 flex flex-col items-start pointer-events-none select-none"
-        >
-          <img 
-            src="/images/united.png" 
-            alt="UGI Logo" 
-            className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain"
-          />
-        </div>
-        {/* UDAAN Right Overlay - Responsive */}
-        <div
-          className="fixed right-2 top-2 z-50 flex flex-col items-end pointer-events-none select-none"
-        >
-          <img 
-            src="/images/udaan-logo-optimized.png" 
-            alt="UDAAN Logo" 
-            className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain"
-          />
-        </div>
       {/* Progress Bar */}
       <div className="h-1 bg-slate-800">
         <div 
