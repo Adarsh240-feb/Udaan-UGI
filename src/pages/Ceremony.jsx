@@ -26,7 +26,7 @@ export default function Ceremony() {
     let scrollInterval;
     let direction = 'down';
     const scrollStep = 2; // px per tick
-    const scrollDelay = 30; // ms per tick
+    const scrollDelay = 20; // ms per tick
     function scrollLoop() {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (direction === 'down') {
