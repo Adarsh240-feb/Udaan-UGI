@@ -30,22 +30,24 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-red-600" />
-        <div className="absolute inset-0 opacity-20">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-              backgroundSize: '40px 40px',
-            }}
-          />
-        </div>
-        
+      <section className="relative min-h-[100vh] sm:min-h-[95vh] flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          src="/videos/UGI%20Video%202.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ opacity: 0.45 }}
+        />
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-700/70 via-blue-900/60 to-red-700/70 z-0" />
+        {/* Removed dotted pattern overlay */}
+
         {/* Decorative Elements */}
-        <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-red-400/30 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-blue-400/30 rounded-full blur-[100px] animate-pulse delay-500" />
+        <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-red-400/30 rounded-full blur-[100px] animate-pulse z-0" />
+        <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-blue-400/30 rounded-full blur-[100px] animate-pulse delay-500 z-0" />
 
         {/* Content */}
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
