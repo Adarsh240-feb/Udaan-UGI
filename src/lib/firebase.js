@@ -238,6 +238,7 @@ export const updateSportScore = (sportId, updates) => {
 };
 
 // Listen to score changes
+
 export const subscribeToScores = (callback) => {
   onValue(scoresRef, (snapshot) => {
     const data = snapshot.val();
@@ -249,5 +250,32 @@ export const subscribeToScores = (callback) => {
       callback(initialSportsData);
     }
   });
+};
+
+// Save match stats (score, winner, loser, etc.) in Firestore
+export const saveMatchStats = ({
+  sportId,
+  matchId,
+  team1,
+  team2,
+  score1,
+  score2,
+  winner,
+  loser,
+  extraStats = {},
+}) => {
+  // Reference: matchStats/{sportId}/{matchId}
+  const matchStatsRef = ref(database, `matchStats/${sportId}/${matchId}`);
+  const stats = {
+    team1,
+    team2,
+    score1,
+    score2,
+    winner,
+    loser,
+    ...extraStats,
+    timestamp: Date.now(),
+  };
+  set(matchStatsRef, stats);
 };
 

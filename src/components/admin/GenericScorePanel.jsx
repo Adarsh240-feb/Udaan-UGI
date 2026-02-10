@@ -1,8 +1,10 @@
 import { Plus, Minus } from 'lucide-react';
-import { getOptionsForSport, updateSportScore, initialSportsData } from '../../lib/firebase';
+import { getOptionsForSport, updateSportScore, initialSportsData, saveMatchStats } from '../../lib/firebase';
+import { useEffect, useRef } from 'react';
 
 // Generic Score Panel Component for non-cricket sports
 export default function GenericScorePanel({ sport, getStatusColor, getStatusText }) {
+  const prevStatus = useRef(sport.status);
 
   // Reset handler: resets all fields for this sport to initial values
   const handleReset = () => {
@@ -18,6 +20,25 @@ export default function GenericScorePanel({ sport, getStatusColor, getStatusText
     const updates = { [field]: value };
     updateSportScore(sportId, updates);
   };
+
+  // Save stats only when status transitions to 'completed'
+  useEffect(() => {
+    if (prevStatus.current !== 'completed' && sport.status === 'completed') {
+      const winner = sport.score1 > sport.score2 ? sport.team1 : sport.score2 > sport.score1 ? sport.team2 : 'Draw';
+      const loser = sport.score1 > sport.score2 ? sport.team2 : sport.score2 > sport.score1 ? sport.team1 : 'Draw';
+      saveMatchStats({
+        sportId: sport.id,
+        matchId: `${sport.id}_${Date.now()}`,
+        team1: sport.team1,
+        team2: sport.team2,
+        score1: sport.score1,
+        score2: sport.score2,
+        winner,
+        loser,
+      });
+    }
+    prevStatus.current = sport.status;
+  }, [sport.status, sport.score1, sport.score2, sport.team1, sport.team2, sport.id]);
 
   const incrementScore = (field) => {
     const newScore = (sport[field] || 0) + 1;

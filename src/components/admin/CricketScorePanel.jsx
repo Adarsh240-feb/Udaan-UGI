@@ -1,9 +1,11 @@
 import { RefreshCw, RotateCcw, ArrowLeftRight, Trophy } from 'lucide-react';
-import { getOptionsForSport } from '../../lib/firebase';
+import { getOptionsForSport, saveMatchStats } from '../../lib/firebase';
+import { useEffect, useRef } from 'react';
 import { updateCricketScore, undoLastBall, switchCricketInnings, resetCricketInnings } from '../../lib/cricket';
 
 // Cricket Score Panel Component for Admin
 export default function CricketScorePanel({ sport, updateScore, getStatusColor, getStatusText }) {
+  const prevStatus = useRef(sport.status);
   const currentInnings = sport.currentInnings || 1;
   const rawInnings = sport[`innings${currentInnings}`] || { runs: 0, wickets: 0, overs: 0, balls: 0, fours: 0, sixes: 0, extras: 0, currentOver: [] };
   
@@ -72,6 +74,30 @@ export default function CricketScorePanel({ sport, updateScore, getStatusColor, 
 
   // Check if match is completed
   const isMatchCompleted = sport.status === 'completed';
+
+  // Save stats only when status transitions to 'completed'
+  useEffect(() => {
+    if (prevStatus.current !== 'completed' && sport.status === 'completed' && sport.team1 && sport.team2) {
+      const winner = sport.innings1?.runs > sport.innings2?.runs ? sport.team1 : sport.innings2?.runs > sport.innings1?.runs ? sport.team2 : 'Draw';
+      const loser = sport.innings1?.runs > sport.innings2?.runs ? sport.team2 : sport.innings2?.runs > sport.innings1?.runs ? sport.team1 : 'Draw';
+      saveMatchStats({
+        sportId: 'cricket',
+        matchId: `cricket_${Date.now()}`,
+        team1: sport.team1,
+        team2: sport.team2,
+        score1: sport.innings1?.runs || 0,
+        score2: sport.innings2?.runs || 0,
+        winner,
+        loser,
+        extraStats: {
+          innings1: sport.innings1,
+          innings2: sport.innings2,
+          totalOvers: sport.totalOvers,
+        },
+      });
+    }
+    prevStatus.current = sport.status;
+  }, [sport.status, sport.team1, sport.team2, sport.innings1, sport.innings2, sport.totalOvers]);
 
   return (
     <div className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-xl">
