@@ -39,7 +39,7 @@ export default function Home() {
           loop
           muted
           playsInline
-          style={{ opacity: 0.45 }}
+          style={{ opacity: 0.55 }}
         />
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-700/70 via-blue-900/60 to-red-700/70 z-0" />
