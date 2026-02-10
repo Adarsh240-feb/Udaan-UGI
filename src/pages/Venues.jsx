@@ -10,9 +10,12 @@ const venueA = {
   mapUrl: 'https://maps.app.goo.gl/obzDrBkn1Gi5MQN2A',
   sports: [
     { name: 'Basketball', category: 'Boys', icon: '🏀' },
-    { name: 'Kho-Kho', category: 'Boys & Girls', icon: '🏃' },
-    { name: 'Athletics', category: 'Track & Field - Boys & Girls', icon: '🏃‍♂️' },
-    { name: 'Tug of War', category: 'Boys & Girls', icon: '🪢' }
+    { name: 'Kho-Kho', category: 'Boys', icon: '🏃' },
+    { name: 'Kho-Kho', category: 'Girls', icon: '🏃' },
+    { name: 'Athletics', category: 'Track & Field - Boys', icon: '🏃‍♂️' },
+    { name: 'Athletics', category: 'Track & Field - Girls', icon: '🏃‍♂️' },
+    { name: 'Tug of War', category: 'Boys', icon: '🪢' },
+    { name: 'Tug of War', category: 'Girls', icon: '🪢' },
   ]
 };
 
