@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, Sun, Moon, Radio, Eye, Lock, X } from 'lucide-react';
+// Navbar component for UDAAN Sports Fest
+// This component handles the navigation bar, including mobile and desktop views.
+// It manages the theme toggle and live scores modal.
 import { useTheme } from '../context/ThemeContext.jsx';
 
 const navLinks = [

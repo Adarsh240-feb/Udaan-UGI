@@ -1,3 +1,5 @@
+// Entry point for React app
+// Mounts the App component to the DOM
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

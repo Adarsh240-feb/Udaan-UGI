@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Calendar } from 'lucide-react';
 
+// Footer component for UDAAN Sports Fest
 export default function Footer() {
   return (
     <footer className="relative py-8 sm:py-12 bg-gradient-to-b from-blue-900 to-blue-950 dark:from-gray-900 dark:to-black text-white">

@@ -1,11 +1,14 @@
+
+// React Router for navigation
 import { Link } from 'react-router-dom';
-import { 
-  Trophy, Calendar, MapPin, Users, ChevronRight, Flame, 
-  Target, Zap, Award, BookOpen, Shield, PartyPopper, Radio 
-} from 'lucide-react';
+// Icon imports
+import { Trophy, Calendar, MapPin, Users, ChevronRight, Flame, Target, Zap, Award, BookOpen, Shield, PartyPopper } from 'lucide-react';
+// UI components
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 
+
+// Section cards for navigation
 const sections = [
   { icon: Target, title: 'Vision & Objective', desc: 'Mission and goals of UDAAN', path: '/about', color: 'bg-red-500' },
   { icon: Users, title: 'Participating Teams', desc: 'The 8-team formula', path: '/teams', color: 'bg-blue-500' },
@@ -19,6 +22,7 @@ const sections = [
   { icon: PartyPopper, title: 'Ceremony', desc: 'Opening & closing', path: '/ceremony', color: 'bg-rose-500' },
 ];
 
+// Event statistics
 const stats = [
   { value: '12+', label: 'Sports' },
   { value: '8', label: 'Teams' },
@@ -26,10 +30,14 @@ const stats = [
   { value: '2', label: 'Days' },
 ];
 
+// Home page for UDAAN Sports Fest
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/*
+        Hero Section: Contains the background video (responsive for desktop/mobile),
+        event title, subtitle, tagline, event details, CTA buttons, and stats.
+      */}
       <section className="relative min-h-[100vh] sm:min-h-[95vh] flex items-center justify-center overflow-hidden">
         {/* Background Video: Desktop (lg+) */}
         <video
@@ -53,24 +61,21 @@ export default function Home() {
         />
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-700/70 via-blue-900/60 to-red-700/70 z-0" />
-        {/* Removed dotted pattern overlay */}
 
-        {/* Decorative Elements */}
+        {/* Decorative blurred circles */}
         <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-red-400/30 rounded-full blur-[100px] animate-pulse z-0" />
         <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-blue-400/30 rounded-full blur-[100px] animate-pulse delay-500 z-0" />
 
-        {/* Content */}
+        {/* Main Content */}
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           {/* Main Title */}
           <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-2 sm:mb-4 tracking-tight animate-fade-in-up">
             UDAAN
           </h1>
-
           {/* Subtitle */}
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4 text-blue-100 animate-fade-in-up delay-100">
             UGI SPORTS FEST 2026
           </h2>
-
           {/* Tagline */}
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-1 sm:mb-2 animate-fade-in-up delay-200">
             Many Institutes, <span className="text-yellow-400 font-semibold">One Energy</span>
@@ -78,7 +83,6 @@ export default function Home() {
           <p className="text-sm sm:text-base md:text-lg text-white/70 italic mb-6 sm:mb-8 animate-fade-in-up delay-300">
             "One Group. One Spirit. One Champion."
           </p>
-
           {/* Event Details */}
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10">
             <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full animate-fade-in-left delay-300">
@@ -94,21 +98,16 @@ export default function Home() {
               <span className="text-sm sm:text-base">8 Teams Competing</span>
             </div>
           </div>
-
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 animate-fade-in-up delay-500">
+            {/* About Button */}
             <Link to="/about">
               <Button size="lg" className="w-full sm:w-auto bg-white text-blue-700 hover:bg-blue-50 font-semibold hover:scale-105 transition-transform">
                 <BookOpen className="w-5 h-5 mr-2" />
                 Explore Udaan
               </Button>
             </Link>
-            {/* <Link to="/registration">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white/10 hover:scale-105 transition-transform">
-                <Zap className="w-5 h-5 mr-2" />
-                Register Now
-              </Button>
-            </Link> */}
+            {/* Live Score Button */}
             <Link to="/live-score">
               <Button size="lg" className="w-full sm:w-auto bg-red-600 text-white hover:bg-red-700 font-semibold hover:scale-105 transition-transform">
                 <span className="relative flex h-2 w-2 mr-2">
@@ -119,7 +118,6 @@ export default function Home() {
               </Button>
             </Link>
           </div>
-
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-10 sm:mt-16">
             {stats.map((stat, index) => (
@@ -133,19 +131,11 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div> 
-      </section>
-
-      {/* Presented By Section
-      <section className="py-8 sm:py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-xs sm:text-sm text-muted-foreground mb-2 animate-fade-in-down">Presented By</p>
-          <h3 className="text-2xl sm:text-3xl font-bold text-blue-900 animate-fade-in-up">UNITED GROUP OF INSTITUTIONS</h3>
-          <p className="text-sm sm:text-base text-muted-foreground mt-2 animate-fade-in-up delay-100">Greater Noida, Uttar Pradesh</p>
         </div>
-      </section> */}
-
-      {/* Table of Contents */}
+      </section>
+      {/*
+        Table of Contents: Navigation cards for all event sections.
+      */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-blue-50 dark:from-gray-900 dark:to-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
@@ -156,10 +146,8 @@ export default function Home() {
               Complete information about the Olympic-style annual sports championship
             </p>
           </div>
-
           {/* Divider */}
           <hr className="border-blue-100 dark:border-gray-700 max-w-md mx-auto mb-8 sm:mb-12" />
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {sections.map((section, index) => {
               const Icon = section.icon;
@@ -186,14 +174,15 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Divider */}
+      {/* Divider: Colorful gradient bar */}
       <div className="h-1 bg-gradient-to-r from-blue-500 via-red-500 to-blue-500 dark:from-blue-600 dark:via-red-600 dark:to-blue-600" />
-
-      {/* Quick Info Section */}
+      {/*
+        Quick Info Section: Event highlights, values, and key features.
+      */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-900 to-blue-950 dark:from-gray-800 dark:to-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            {/* Event Description and Values */}
             <div className="animate-fade-in-left">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
                 The Ultimate <span className="text-yellow-400">Inter-College</span> Sports Championship
@@ -203,11 +192,10 @@ export default function Home() {
                 championship of the United Group of Institutions. For two days, all 5 colleges under the 
                 United banner will lock horns to claim the ultimate "General Championship Trophy."
               </p>
-
               {/* Divider */}
               <hr className="border-blue-800 dark:border-gray-600 my-4 sm:my-6" />
-
               <div className="space-y-3 sm:space-y-4">
+                {/* Event Values List */}
                 {[
                   'Unity: UDAAN bridges the gap between different colleges',
                   'Fairness: A unique 2-team system ensures equal opportunity',
@@ -225,6 +213,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
+            {/* Event Key Features */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {[
                 { icon: Trophy, value: '🏅', label: 'Gold, Silver, Bronze' },
