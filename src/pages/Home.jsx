@@ -31,10 +31,20 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[100vh] sm:min-h-[95vh] flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
+        {/* Background Video: Desktop (lg+) */}
         <video
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="hidden lg:block absolute inset-0 w-full h-full object-cover z-0"
           src="/videos/UGI%20FINAL.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ opacity: 0.65 }}
+        />
+        {/* Background Video: Mobile/Tablet (<lg) */}
+        <video
+          className="block lg:hidden absolute inset-0 w-full h-full object-cover z-0"
+          src="/videos/uhack%20mobile~2.mp4"
           autoPlay
           loop
           muted
@@ -145,18 +155,6 @@ export default function Home() {
             <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto animate-fade-in-up delay-100">
               Complete information about the Olympic-style annual sports championship
             </p>
-            {/* Uhack Mobile Video for Mobile/Tablet Only */}
-            <div className="block lg:hidden w-full bg-black mt-4">
-              <video
-                className="w-full h-auto object-cover mx-auto"
-                src="/videos/uhack%20mobile~2.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                style={{ maxHeight: '420px', borderRadius: '1rem', margin: '0 auto' }}
-              />
-            </div>
           </div>
 
           {/* Divider */}
