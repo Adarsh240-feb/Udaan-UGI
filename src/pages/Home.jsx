@@ -145,6 +145,18 @@ export default function Home() {
             <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto animate-fade-in-up delay-100">
               Complete information about the Olympic-style annual sports championship
             </p>
+            {/* Uhack Mobile Video for Mobile/Tablet Only */}
+            <div className="block lg:hidden w-full bg-black mt-4">
+              <video
+                className="w-full h-auto object-cover mx-auto"
+                src="/videos/uhack%20mobile~2.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ maxHeight: '420px', borderRadius: '1rem', margin: '0 auto' }}
+              />
+            </div>
           </div>
 
           {/* Divider */}

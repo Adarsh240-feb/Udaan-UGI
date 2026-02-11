@@ -199,7 +199,7 @@ export default function Teams() {
                 <div className="space-y-2">
                   <div className="bg-white/10 dark:bg-gray-600/50 rounded-lg py-2 px-4 text-sm">5 Colleges</div>
                   <div className="bg-white/10 dark:bg-gray-600/50 rounded-lg py-2 px-4 text-sm">8 Teams</div>
-                  <div className="bg-white/10 dark:bg-gray-600/50 rounded-lg py-2 px-4 text-sm">1280+ Athletes</div>
+                  <div className="bg-white/10 dark:bg-gray-600/50 rounded-lg py-2 px-4 text-sm">1120+ Athletes</div>
                 </div>
               </CardContent>
             </Card>
