@@ -34,12 +34,12 @@ export default function Home() {
         {/* Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover z-0"
-          src="/videos/UGI%20Video%202.mp4"
+          src="/videos/UGI%20FINAL.mp4"
           autoPlay
           loop
           muted
           playsInline
-          style={{ opacity: 0.55 }}
+          style={{ opacity: 0.65 }}
         />
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-700/70 via-blue-900/60 to-red-700/70 z-0" />
