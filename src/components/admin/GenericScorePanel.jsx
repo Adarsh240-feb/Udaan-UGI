@@ -43,6 +43,13 @@ export default function GenericScorePanel({ sport, getStatusColor, getStatusText
   const incrementScore = (field) => {
     const newScore = (sport[field] || 0) + 1;
     updateScore(sport.id, field, newScore);
+    // Change status to live when incrementing
+    if (sport.status !== 'live') {
+      updateScore(sport.id, 'status', 'live');
+    }
+    if (sport.scorelimit && newScore >= sport.scorelimit) {
+      updateScore(sport.id, 'status', 'completed');
+    }
   };
 
   const decrementScore = (field) => {
@@ -56,17 +63,17 @@ export default function GenericScorePanel({ sport, getStatusColor, getStatusText
 
   return (
     <div className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-xl relative">
-            {/* Reset Button for completed matches */}
-            {sport.status === 'completed' && (
-              <div className="flex justify-end mt-2 mr-4">
-                <button
-                  onClick={handleReset}
-                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold shadow-lg z-20"
-                >
-                  Reset
-                </button>
-              </div>
-            )}
+      {/* Reset Button for completed matches */}
+      {sport.status === 'completed' && (
+        <div className="flex justify-end mt-2 mr-4">
+          <button
+            onClick={handleReset}
+            className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold shadow-lg z-20"
+          >
+            Reset
+          </button>
+        </div>
+      )}
       {/* Match Header */}
       <div className="bg-slate-700/50 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -105,7 +112,7 @@ export default function GenericScorePanel({ sport, getStatusColor, getStatusText
                 <option key={option} value={option}>{option}</option>
               ))}
             </select>
-            
+
             <div className="bg-slate-700/50 rounded-2xl p-6">
               <div className="text-5xl sm:text-6xl font-black text-white mb-4 tabular-nums">
                 {sport.score1}
@@ -146,7 +153,7 @@ export default function GenericScorePanel({ sport, getStatusColor, getStatusText
                 <option key={option} value={option}>{option}</option>
               ))}
             </select>
-            
+
             <div className="bg-slate-700/50 rounded-2xl p-6">
               <div className="text-5xl sm:text-6xl font-black text-white mb-4 tabular-nums">
                 {sport.score2}

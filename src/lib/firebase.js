@@ -106,17 +106,17 @@ export const initialSportsData = [
     battingTeam: 1,
     lastBalls: [] // Last 12 balls for display
   },
-  { id: 'volleyball_boys', name: 'Volleyball 🏐', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'volleyball_girls', name: 'Volleyball 🏐', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'basketball_boys', name: 'Basketball 🏀', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'basketball_girls', name: 'Basketball 🏀', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'khokho_boys', name: 'Kho-Kho 🏃', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'khokho_girls', name: 'Kho-Kho 🏃', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'badminton_boys', name: 'Badminton 🏸', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'badminton_girls', name: 'Badminton 🏸', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'tabletennis_boys', name: 'Table Tennis 🏓', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'tabletennis_girls', name: 'Table Tennis 🏓', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
-  { id: 'football', name: 'Football ⚽', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' },
+  { id: 'volleyball_boys', name: 'Volleyball 🏐', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'volleyball_girls', name: 'Volleyball 🏐', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'basketball_boys', name: 'Basketball 🏀', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'basketball_girls', name: 'Basketball 🏀', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'khokho_boys', name: 'Kho-Kho 🏃', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'khokho_girls', name: 'Kho-Kho 🏃', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'badminton_boys', name: 'Badminton 🏸', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'badminton_girls', name: 'Badminton 🏸', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'tabletennis_boys', name: 'Table Tennis 🏓', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'tabletennis_girls', name: 'Table Tennis 🏓', category: 'Girls', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
+  { id: 'football', name: 'Football ⚽', category: 'Boys', team1: '', team2: '', score1: 0, score2: 0, status: 'upcoming' ,scorelimit: 10},
 ];
 
 // Teams list
