@@ -139,7 +139,7 @@ export const sportTeams = {
     label: 'Team',
     options: ['Red Warriors', 'Blue Thunder', 'Green Eagles', 'Yellow Lions', 'Orange Flames', 'Purple Storm', 'White Knights', 'Black Panthers']
   },
-  // Team Sports - Cricket
+  // Team Sports - Crickett
   cricket: {
     type: 'team',
     label: 'Team',
