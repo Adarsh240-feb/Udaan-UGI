@@ -39,8 +39,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/teams" element={<Teams />} />
-                  // Main App component for UDAAN Sports Fest
-                  // Handles routing and global layout
             <Route path="/tournament" element={<Tournament />} />
             <Route path="/sports" element={<Sports />} />
             <Route path="/rules" element={<Rules />} />
@@ -50,6 +48,7 @@ function App() {
             <Route path="/ceremony" element={<Ceremony />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/live-score" element={<LiveScore />} />
+            <Route path="/venues" element={<Venues />} />
           </Routes>
         </main>
         <Footer />
